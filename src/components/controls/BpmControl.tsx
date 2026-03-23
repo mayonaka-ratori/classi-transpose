@@ -1,10 +1,9 @@
 import { useCallback, useState, useEffect } from 'react';
 
 import { usePlayerStore } from '../../stores/usePlayerStore';
-import { MIN_TEMPO_SCALE, MAX_TEMPO_SCALE } from '../../utils/constants';
+import { MIN_TEMPO_SCALE, MAX_TEMPO_SCALE, MAX_BPM } from '../../utils/constants';
 
 const MIN_BPM = 1;
-const MAX_BPM = 9999;
 
 export function BpmControl(): React.JSX.Element {
   const originalBpm = usePlayerStore((s) => s.originalBpm);
@@ -13,6 +12,12 @@ export function BpmControl(): React.JSX.Element {
 
   const currentBpm = Math.round(originalBpm * tempoScale);
   const percentLabel = `${Math.round(tempoScale * 100)}%`;
+
+  // Dynamic slider max: cap so result never exceeds MAX_BPM (320)
+  const sliderMax =
+    originalBpm > 0
+      ? Math.min(MAX_TEMPO_SCALE, MAX_BPM / originalBpm)
+      : MAX_TEMPO_SCALE;
 
   const [inputValue, setInputValue] = useState(String(currentBpm));
 
@@ -73,7 +78,7 @@ export function BpmControl(): React.JSX.Element {
         </span>
       </div>
 
-      {/* Percentage + original */}
+      {/* Percentage + original + max indicator */}
       <p
         className="text-sm -mt-2 tabular-nums"
         style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-accent-teal)' }}
@@ -83,21 +88,21 @@ export function BpmControl(): React.JSX.Element {
           className="ml-2 text-xs"
           style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text-tertiary)' }}
         >
-          original {Math.round(originalBpm)} BPM
+          original {Math.round(originalBpm)} BPM · max {MAX_BPM}
         </span>
       </p>
 
-      {/* Teal gradient slider */}
+      {/* Teal gradient slider — max is dynamic to enforce MAX_BPM cap */}
       <input
         type="range"
         min={MIN_TEMPO_SCALE}
-        max={MAX_TEMPO_SCALE}
+        max={sliderMax}
         step={0.01}
         value={tempoScale}
         onChange={handleSliderChange}
         aria-label="Tempo scale"
         aria-valuemin={MIN_TEMPO_SCALE}
-        aria-valuemax={MAX_TEMPO_SCALE}
+        aria-valuemax={sliderMax}
         aria-valuenow={tempoScale}
         className="slider-teal"
       />

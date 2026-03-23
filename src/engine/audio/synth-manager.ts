@@ -2,9 +2,10 @@ import { WorkletSynthesizer } from 'spessasynth_lib';
 import { BasicMIDI } from 'spessasynth_core';
 import type { MidiTrack } from '../../types/midi';
 import { computeChannelMutes } from '../midi/track-state';
+import { fetchWithProgress } from './soundfont-loader';
 
 const PROCESSOR_URL = '/spessasynth_processor.min.js';
-const DEFAULT_SOUNDFONT_URL = '/soundfonts/GeneralUser-GS.sf2';
+const HQ_SOUNDFONT_URL = '/soundfonts/GeneralUser-GS.sf2';
 const DRUM_CHANNEL = 9;
 const MIDI_CHANNELS = 16;
 
@@ -13,8 +14,9 @@ let synthesizer: WorkletSynthesizer | null = null;
 let soundFontLoaded = false;
 
 /**
- * Initialize the AudioContext and Synthesizer.
+ * Initialize the AudioContext and Synthesizer worklet.
  * Must be called after a user gesture (browser autoplay policy).
+ * Does NOT load a SoundFont — call loadHQSoundFont() separately.
  */
 export async function initAudio(): Promise<void> {
   if (synthesizer) return; // already initialized
@@ -24,26 +26,30 @@ export async function initAudio(): Promise<void> {
 
   synthesizer = new WorkletSynthesizer(audioContext);
   synthesizer.connect(audioContext.destination);
-
-  await loadDefaultSoundFont();
 }
 
-async function loadDefaultSoundFont(): Promise<void> {
-  if (!synthesizer || soundFontLoaded) return;
+/**
+ * Load the High-Quality SoundFont (GeneralUser GS SF2) into the synthesizer.
+ * Safe to call multiple times — subsequent calls are no-ops once loaded.
+ *
+ * @param onProgress  Optional callback receiving a 0–100 download progress value.
+ * @throws            If the download fails or the synthesizer is not yet initialized.
+ */
+export async function loadHQSoundFont(
+  onProgress?: (pct: number) => void,
+): Promise<void> {
+  if (soundFontLoaded) return; // already loaded — instant switch
 
-  try {
-    const response = await fetch(DEFAULT_SOUNDFONT_URL);
-    if (!response.ok) {
-      console.warn('Default SoundFont not found — playback will be silent until a SoundFont is loaded.');
-      return;
-    }
-    const buffer = await response.arrayBuffer();
-    await synthesizer.soundBankManager.addSoundBank(buffer, 'default');
-    await synthesizer.isReady;
-    soundFontLoaded = true;
-  } catch (err) {
-    console.warn('Failed to load default SoundFont:', err);
-  }
+  // Ensure synthesizer is ready (may be called before play() triggers initAudio)
+  await initAudio();
+
+  if (!synthesizer) throw new Error('Synthesizer not initialized');
+
+  const progress = onProgress ?? ((_pct: number): void => { /* noop */ });
+  const buffer = await fetchWithProgress(HQ_SOUNDFONT_URL, progress);
+  await synthesizer.soundBankManager.addSoundBank(buffer, 'hq');
+  await synthesizer.isReady;
+  soundFontLoaded = true;
 }
 
 /**
@@ -68,8 +74,6 @@ export function applyTranspose(semitones: number): void {
 
 /**
  * Apply mute/solo state to all channels.
- * Computes which channels should be muted based on track mute/solo sets,
- * then calls synthesizer.muteChannel() for each affected channel.
  */
 export function applyMuteState(
   tracks: readonly MidiTrack[],
@@ -84,7 +88,7 @@ export function applyMuteState(
 }
 
 /**
- * Load a SoundFont from the given URL and replace the current one.
+ * Load a SoundFont from the given URL and add it to the bank manager.
  */
 export async function loadSoundFont(url: string, id = 'custom'): Promise<void> {
   if (!synthesizer) throw new Error('Synthesizer not initialized');
@@ -118,7 +122,6 @@ export function isSoundFontLoaded(): boolean {
 
 /**
  * Keep the BasicMIDI reference for the Sequencer.
- * This is set by the parser and used by the playback scheduler.
  */
 let currentBasicMidi: BasicMIDI | null = null;
 

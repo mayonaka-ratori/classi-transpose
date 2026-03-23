@@ -8,6 +8,7 @@ import {
   setLoopConfig,
 } from '../engine/audio/playback-scheduler';
 import { resumeAudio } from '../engine/audio/synth-manager';
+import { MIN_TEMPO_SCALE, MAX_TEMPO_SCALE, MAX_BPM } from '../utils/constants';
 
 type PlayerStore = {
   isPlaying: boolean;
@@ -32,7 +33,7 @@ type PlayerStore = {
   setOriginalBpm: (bpm: number) => void;
 };
 
-export const usePlayerStore = create<PlayerStore>()((set) => ({
+export const usePlayerStore = create<PlayerStore>()((set, get) => ({
   isPlaying: false,
   currentTime: 0,
   duration: 0,
@@ -64,7 +65,13 @@ export const usePlayerStore = create<PlayerStore>()((set) => ({
   },
 
   setTempoScale: (scale) => {
-    const clamped = Math.max(0.25, Math.min(4.0, scale));
+    const { originalBpm } = get();
+    // Cap scale so resulting BPM does not exceed MAX_BPM (320)
+    const maxScale =
+      originalBpm > 0
+        ? Math.min(MAX_TEMPO_SCALE, MAX_BPM / originalBpm)
+        : MAX_TEMPO_SCALE;
+    const clamped = Math.max(MIN_TEMPO_SCALE, Math.min(maxScale, scale));
     engineSetPlaybackRate(clamped);
     set({ tempoScale: clamped });
   },
