@@ -4,7 +4,7 @@ import type { MidiTrack } from '../../types/midi';
 import { computeChannelMutes } from '../midi/track-state';
 
 const PROCESSOR_URL = '/spessasynth_processor.min.js';
-const DEFAULT_SOUNDFONT_URL = '/soundfonts/GeneralUser_GS.sf2';
+const DEFAULT_SOUNDFONT_URL = '/soundfonts/GeneralUser-GS.sf2';
 const DRUM_CHANNEL = 9;
 const MIDI_CHANNELS = 16;
 
