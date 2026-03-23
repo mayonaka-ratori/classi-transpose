@@ -22,3 +22,10 @@ React 19 · TypeScript · Vite 6 · Zustand · Tailwind CSS · Radix UI · spess
 
 ## License
 MIT
+
+## MIDI File Credits
+
+Bundled MIDI files are sourced from **[piano-midi.de](http://www.piano-midi.de)** by Bernd Krueger,
+licensed under [CC BY-SA 3.0 DE](http://creativecommons.org/licenses/by-sa/3.0/de/deed.en).
+
+See [`public/presets/CREDITS.md`](public/presets/CREDITS.md) for the full list of files and their licenses.

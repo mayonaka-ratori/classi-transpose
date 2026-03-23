@@ -28,6 +28,7 @@ export interface MidiPiece {
   filename: string;
   source: string;
   sourceUrl: string;
+  available?: boolean;
 }
 
 export interface ComposerGroup {
@@ -89,6 +90,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-invention-04.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_invention_04.mid',
+      available: false,
     },
     {
       id: 'bach-invention-08',
@@ -104,6 +106,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-invention-08.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_invention_08.mid',
+      available: false,
     },
     {
       id: 'bach-invention-13',
@@ -119,6 +122,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-invention-13.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_invention_13.mid',
+      available: false,
     },
     {
       id: 'bach-wtc1-prelude-c',
@@ -134,6 +138,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-wtc1-prelude-c.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_846.mid',
+      available: false,
     },
     {
       id: 'bach-wtc1-fugue-cm',
@@ -149,6 +154,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-wtc1-fugue-cm.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_847.mid',
+      available: false,
     },
     {
       id: 'bach-toccata-dm',
@@ -209,6 +215,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-minuet-g.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Minuet-in-G-major.mid',
+      available: false,
     },
   ],
 };
@@ -318,6 +325,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-sonata-k545-1.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/mozart/moz_k545.mid',
+      available: false,
     },
     {
       id: 'mozart-alla-turca',
@@ -333,6 +341,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-alla-turca.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Turkish-March-Mozart.mid',
+      available: false,
     },
     {
       id: 'mozart-eine-kleine-1',
@@ -418,6 +427,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-fur-elise.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/beethoven/beethoven_fur_elise.mid',
+      available: false,
     },
     {
       id: 'beethoven-moonlight-1',
@@ -433,6 +443,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-moonlight-1.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/beethoven/beethoven_op27_2.mid',
+      available: false,
     },
     {
       id: 'beethoven-pathetique-2',
@@ -448,6 +459,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-pathetique-2.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/beethoven/beethoven_op13_2.mid',
+      available: false,
     },
     {
       id: 'beethoven-symphony5-1',
@@ -522,6 +534,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-nocturne-op9-2.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op9_2.mid',
+      available: false,
     },
     {
       id: 'chopin-waltz-op64-2',
@@ -537,6 +550,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-waltz-op64-2.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op64_2.mid',
+      available: false,
     },
     {
       id: 'chopin-prelude-op28-4',
@@ -552,6 +566,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-prelude-op28-4.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op28_4.mid',
+      available: false,
     },
     {
       id: 'chopin-prelude-op28-7',
@@ -567,6 +582,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-prelude-op28-7.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op28_7.mid',
+      available: false,
     },
     {
       id: 'chopin-etude-op10-3',
@@ -582,6 +598,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-etude-op10-3.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op10_3.mid',
+      available: false,
     },
     {
       id: 'chopin-fantaisie-impromptu',
@@ -597,6 +614,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-fantaisie-impromptu.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op66.mid',
+      available: false,
     },
     {
       id: 'chopin-polonaise-op53',
@@ -612,6 +630,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-polonaise-op53.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op53.mid',
+      available: false,
     },
     {
       id: 'chopin-ballade-1',
@@ -627,6 +646,7 @@ const CHOPIN: ComposerGroup = {
       filename: 'chopin-ballade-1.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/chopin/chp_op23.mid',
+      available: false,
     },
   ],
 };
@@ -667,6 +687,7 @@ const SCHUBERT: ComposerGroup = {
       filename: 'schubert-impromptu-op90-4.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/schubert/schubert_op90_4.mid',
+      available: false,
     },
   ],
 };
@@ -692,6 +713,7 @@ const SCHUMANN: ComposerGroup = {
       filename: 'schumann-traumerei.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/schumann/schumann_traum.mid',
+      available: false,
     },
     {
       id: 'schumann-soldiers-march',
@@ -731,6 +753,7 @@ const LISZT: ComposerGroup = {
       filename: 'liszt-liebestraum-3.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/liszt/liszt_liebestraum.mid',
+      available: false,
     },
     {
       id: 'liszt-hungarian-rhapsody-2',
@@ -745,6 +768,7 @@ const LISZT: ComposerGroup = {
       filename: 'liszt-hungarian-rhapsody-2.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/liszt/liszt_hungarian_rhapsody_2.mid',
+      available: false,
     },
     {
       id: 'liszt-la-campanella',
@@ -759,6 +783,7 @@ const LISZT: ComposerGroup = {
       filename: 'liszt-la-campanella.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/liszt/liszt_campanella.mid',
+      available: false,
     },
   ],
 };
@@ -784,6 +809,7 @@ const TCHAIKOVSKY: ComposerGroup = {
       filename: 'tchaikovsky-swan-lake.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Tchaikovsky Swan Lake"',
+      available: false,
     },
     {
       id: 'tchaikovsky-sugar-plum',
@@ -923,6 +949,7 @@ const GRIEG: ComposerGroup = {
       filename: 'grieg-piano-concerto-am.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/grieg/grieg_piano_concerto.mid',
+      available: false,
     },
   ],
 };
@@ -985,8 +1012,9 @@ const SATIE: ComposerGroup = {
       estimatedBpm: 52,
       estimatedDuration: '3:30',
       filename: 'satie-gymnopedie-1.mid',
-      source: 'piano-midi.de',
-      sourceUrl: 'http://www.piano-midi.de/midis/satie/satie_gymnopedie_1.mid',
+      source: 'midiworld.com',
+      sourceUrl: 'https://www.midiworld.com/midis/other/c3/gymnop01.mid',
+      available: true,
     },
     {
       id: 'satie-gymnopedie-2',
@@ -999,8 +1027,9 @@ const SATIE: ComposerGroup = {
       estimatedBpm: 52,
       estimatedDuration: '3:00',
       filename: 'satie-gymnopedie-2.mid',
-      source: 'piano-midi.de',
-      sourceUrl: 'http://www.piano-midi.de/midis/satie/satie_gymnopedie_2.mid',
+      source: 'midiworld.com',
+      sourceUrl: 'https://www.midiworld.com/midis/other/c3/gymnop02.mid',
+      available: true,
     },
     {
       id: 'satie-gnossienne-1',
@@ -1064,6 +1093,7 @@ const RACHMANINOFF: ComposerGroup = {
       filename: 'rachmaninoff-prelude-csm.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/rachmaninoff/rachmaninoff_op3_2.mid',
+      available: false,
     },
     {
       id: 'rachmaninoff-prelude-gm',
@@ -1079,6 +1109,7 @@ const RACHMANINOFF: ComposerGroup = {
       filename: 'rachmaninoff-prelude-gm.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/rachmaninoff/rachmaninoff_op23_5.mid',
+      available: false,
     },
     {
       id: 'rachmaninoff-concerto2-1',
@@ -1122,6 +1153,7 @@ const DEBUSSY: ComposerGroup = {
       filename: 'debussy-clair-de-lune.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/debussy/deb_clai.mid',
+      available: false,
     },
     {
       id: 'debussy-arabesque-1',
@@ -1136,6 +1168,7 @@ const DEBUSSY: ComposerGroup = {
       filename: 'debussy-arabesque-1.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/debussy/deb_ara1.mid',
+      available: false,
     },
     {
       id: 'debussy-reverie',
@@ -1150,6 +1183,7 @@ const DEBUSSY: ComposerGroup = {
       filename: 'debussy-reverie.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/debussy/deb_reve.mid',
+      available: false,
     },
     {
       id: 'debussy-apres-midi',
@@ -1201,6 +1235,7 @@ const RAVEL: ComposerGroup = {
       filename: 'ravel-jeux-deau.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/ravel/ravel_jeux_d_eau.mid',
+      available: false,
     },
     {
       id: 'ravel-pavane',
@@ -1215,6 +1250,7 @@ const RAVEL: ComposerGroup = {
       filename: 'ravel-pavane.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/ravel/ravel_pavane.mid',
+      available: false,
     },
   ],
 };
