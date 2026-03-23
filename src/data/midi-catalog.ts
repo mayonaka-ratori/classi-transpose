@@ -75,6 +75,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-invention-01.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_invention_01.mid',
+      available: false,
     },
     {
       id: 'bach-invention-04',
@@ -170,6 +171,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-toccata-dm.mid',
       source: 'midiworld.com',
       sourceUrl: 'https://www.midiworld.com/download/3869',
+      available: false,
     },
     {
       id: 'bach-air-g-string',
@@ -185,6 +187,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-air-g-string.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/bach/bach_air.mid',
+      available: false,
     },
     {
       id: 'bach-jesu-joy',
@@ -200,6 +203,7 @@ const BACH: ComposerGroup = {
       filename: 'bach-jesu-joy.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Jesu-Joy-of-Mans-Desiring.mid',
+      available: false,
     },
     {
       id: 'bach-minuet-g',
@@ -258,6 +262,7 @@ const HANDEL: ComposerGroup = {
       filename: 'handel-water-music-air.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Handel Water Music Air"',
+      available: false,
     },
     {
       id: 'handel-sarabande-dm',
@@ -273,6 +278,7 @@ const HANDEL: ComposerGroup = {
       filename: 'handel-sarabande-dm.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/handel/handel_sarabande.mid',
+      available: false,
     },
     {
       id: 'handel-hallelujah',
@@ -288,6 +294,7 @@ const HANDEL: ComposerGroup = {
       filename: 'handel-hallelujah.mid',
       source: 'midiworld.com',
       sourceUrl: 'https://www.midiworld.com/download/3885',
+      available: false,
     },
   ],
 };
@@ -313,6 +320,7 @@ const VIVALDI: ComposerGroup = {
       filename: 'vivaldi-spring-1.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Vivaldi Spring Four Seasons"',
+      available: false,
     },
   ],
 };
@@ -374,6 +382,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-eine-kleine-1.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Eine-Kleine-Nachtmusik-1st-movement.mid',
+      available: false,
     },
     {
       id: 'mozart-symphony40-1',
@@ -389,6 +398,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-symphony40-1.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Mozart Symphony 40"',
+      available: false,
     },
     {
       id: 'mozart-concerto21-2',
@@ -404,6 +414,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-concerto21-2.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Mozart Piano Concerto 21 Elvira Madigan"',
+      available: false,
     },
     {
       id: 'mozart-minuet-k1',
@@ -419,6 +430,7 @@ const MOZART: ComposerGroup = {
       filename: 'mozart-minuet-k1.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'MANUAL: search mfiles.co.uk for "Mozart Minuet K1"',
+      available: false,
     },
   ],
 };
@@ -492,6 +504,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-symphony5-1.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Beethoven Symphony 5"',
+      available: false,
     },
     {
       id: 'beethoven-ode-to-joy',
@@ -507,6 +520,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-ode-to-joy.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Ode-to-Joy.mid',
+      available: false,
     },
     {
       id: 'beethoven-minuet-g',
@@ -522,6 +536,7 @@ const BEETHOVEN: ComposerGroup = {
       filename: 'beethoven-minuet-g.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'MANUAL: search mfiles.co.uk for "Beethoven Minuet G WoO 10"',
+      available: false,
     },
     {
       id: 'beethoven-moonlight-2',
@@ -1795,6 +1810,7 @@ const SCHUBERT: ComposerGroup = {
       filename: 'schubert-ave-maria.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Ave-Maria-Schubert.mid',
+      available: true,
     },
     {
       id: 'schubert-impromptu-op90-4',
@@ -2301,6 +2317,7 @@ const SCHUMANN: ComposerGroup = {
       filename: 'schumann-soldiers-march.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'MANUAL: search mfiles.co.uk for "Schumann Soldiers March Op 68"',
+      available: false,
     },
   ],
 };
@@ -2593,6 +2610,7 @@ const TCHAIKOVSKY: ComposerGroup = {
       filename: 'tchaikovsky-sugar-plum.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Dance-of-the-Sugar-Plum-Fairy.mid',
+      available: false,
     },
     {
       id: 'tchaikovsky-waltz-flowers',
@@ -2608,6 +2626,7 @@ const TCHAIKOVSKY: ComposerGroup = {
       filename: 'tchaikovsky-waltz-flowers.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Tchaikovsky Waltz of the Flowers"',
+      available: false,
     },
     {
       id: 'tchaikovsky-piano-concerto1',
@@ -2623,6 +2642,7 @@ const TCHAIKOVSKY: ComposerGroup = {
       filename: 'tchaikovsky-piano-concerto1.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Tchaikovsky Piano Concerto 1"',
+      available: false,
     },
     {
       id: 'tchaikovsky-seasons-01',
@@ -2840,6 +2860,7 @@ const BRAHMS: ComposerGroup = {
       filename: 'brahms-hungarian-dance-5.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Hungarian-Dance-No5.mid',
+      available: false,
     },
     {
       id: 'brahms-lullaby',
@@ -2855,6 +2876,7 @@ const BRAHMS: ComposerGroup = {
       filename: 'brahms-lullaby.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Brahms-Lullaby.mid',
+      available: false,
     },
     {
       id: 'brahms-intermezzo-op117-1',
@@ -3041,6 +3063,7 @@ const GRIEG: ComposerGroup = {
       filename: 'grieg-morning-mood.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/grieg/grieg_morning.mid',
+      available: true,
     },
     {
       id: 'grieg-mountain-king',
@@ -3056,6 +3079,7 @@ const GRIEG: ComposerGroup = {
       filename: 'grieg-mountain-king.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/In-the-Hall-of-the-Mountain-King.mid',
+      available: true,
     },
     {
       id: 'grieg-piano-concerto-am',
@@ -3097,6 +3121,7 @@ const DVORAK: ComposerGroup = {
       filename: 'dvorak-new-world-largo.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Dvorak New World Symphony Largo"',
+      available: false,
     },
     {
       id: 'dvorak-humoresque-7',
@@ -3112,6 +3137,7 @@ const DVORAK: ComposerGroup = {
       filename: 'dvorak-humoresque-7.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Humoresque-Dvorak.mid',
+      available: false,
     },
   ],
 };
@@ -3166,6 +3192,7 @@ const SATIE: ComposerGroup = {
       filename: 'satie-gnossienne-1.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/satie/satie_gnossienne_1.mid',
+      available: true,
     },
   ],
 };
@@ -3190,6 +3217,7 @@ const RIMSKY_KORSAKOV: ComposerGroup = {
       filename: 'rimsky-korsakov-bumblebee.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Flight-of-the-Bumblebee.mid',
+      available: true,
     },
   ],
 };
@@ -3247,6 +3275,7 @@ const RACHMANINOFF: ComposerGroup = {
       filename: 'rachmaninoff-concerto2-1.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Rachmaninoff Piano Concerto 2"',
+      available: false,
     },
     {
       id: 'rachmaninoff-prelude-op23-2',
@@ -3448,6 +3477,7 @@ const DEBUSSY: ComposerGroup = {
       filename: 'debussy-apres-midi.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Debussy Prelude apres midi faune"',
+      available: false,
     },
     {
       id: 'debussy-suite-bergamasque-1',
@@ -3593,6 +3623,7 @@ const RAVEL: ComposerGroup = {
       filename: 'ravel-bolero.mid',
       source: 'midiworld.com',
       sourceUrl: 'MANUAL: search midiworld.com for "Ravel Bolero"',
+      available: true,
     },
     {
       id: 'ravel-jeux-deau',
@@ -3622,7 +3653,7 @@ const RAVEL: ComposerGroup = {
       filename: 'ravel-pavane.mid',
       source: 'piano-midi.de',
       sourceUrl: 'http://www.piano-midi.de/midis/ravel/ravel_pavane.mid',
-      available: true,
+      available: false,
     },
     {
       id: 'ravel-gaspard-ondine',
@@ -3712,6 +3743,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'sakura-sakura.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'MANUAL: search for "Sakura Sakura MIDI"',
+      available: false,
     },
     {
       id: 'furusato',
@@ -3726,6 +3758,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'furusato.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "ふるさと MIDI"',
+      available: false,
     },
     {
       id: 'akatonbo',
@@ -3740,6 +3773,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'akatonbo.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "赤とんぼ MIDI"',
+      available: false,
     },
     {
       id: 'koujou-no-tsuki',
@@ -3754,6 +3788,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'koujou-no-tsuki.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "荒城の月 MIDI"',
+      available: false,
     },
     {
       id: 'hamabe-no-uta',
@@ -3768,6 +3803,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'hamabe-no-uta.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "浜辺の歌 MIDI"',
+      available: false,
     },
     {
       id: 'oborozukiyo',
@@ -3782,6 +3818,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'oborozukiyo.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "朧月夜 MIDI"',
+      available: false,
     },
     {
       id: 'haru-ga-kita',
@@ -3796,6 +3833,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'haru-ga-kita.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "春が来た MIDI"',
+      available: false,
     },
     {
       id: 'haru-no-ogawa',
@@ -3810,6 +3848,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'haru-no-ogawa.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "春の小川 MIDI"',
+      available: false,
     },
     {
       id: 'hotaru-no-hikari',
@@ -3824,6 +3863,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'hotaru-no-hikari.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "蛍の光 MIDI"',
+      available: false,
     },
     {
       id: 'soshunfu',
@@ -3838,6 +3878,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'soshunfu.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "早春賦 MIDI"',
+      available: false,
     },
     {
       id: 'toryanse',
@@ -3852,6 +3893,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'toryanse.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "とおりゃんせ MIDI"',
+      available: false,
     },
     {
       id: 'kagome-kagome',
@@ -3866,6 +3908,7 @@ const JAPANESE_TRADITIONAL: ComposerGroup = {
       filename: 'kagome-kagome.mid',
       source: 'MANUAL',
       sourceUrl: 'MANUAL: search for "かごめかごめ MIDI"',
+      available: false,
     },
   ],
 };
@@ -3893,6 +3936,7 @@ const WORLD_TRADITIONAL: ComposerGroup = {
       filename: 'greensleeves.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Greensleeves.mid',
+      available: false,
     },
     {
       id: 'danny-boy',
@@ -3906,6 +3950,7 @@ const WORLD_TRADITIONAL: ComposerGroup = {
       filename: 'danny-boy.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Danny-Boy.mid',
+      available: false,
     },
     {
       id: 'amazing-grace',
@@ -3919,6 +3964,7 @@ const WORLD_TRADITIONAL: ComposerGroup = {
       filename: 'amazing-grace.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Amazing-Grace.mid',
+      available: false,
     },
     {
       id: 'scarborough-fair',
@@ -3932,6 +3978,7 @@ const WORLD_TRADITIONAL: ComposerGroup = {
       filename: 'scarborough-fair.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'MANUAL: search mfiles.co.uk for "Scarborough Fair"',
+      available: false,
     },
   ],
 };
@@ -3960,6 +4007,7 @@ const JOPLIN: ComposerGroup = {
       filename: 'joplin-entertainer.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/The-Entertainer.mid',
+      available: true,
     },
     {
       id: 'joplin-maple-leaf-rag',
@@ -3974,6 +4022,7 @@ const JOPLIN: ComposerGroup = {
       filename: 'joplin-maple-leaf-rag.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Maple-Leaf-Rag.mid',
+      available: true,
     },
   ],
 };
@@ -3998,6 +4047,7 @@ const PACHELBEL: ComposerGroup = {
       filename: 'pachelbel-canon.mid',
       source: 'mfiles.co.uk',
       sourceUrl: 'https://www.mfiles.co.uk/midi/Canon-In-D.mid',
+      available: false,
     },
   ],
 };

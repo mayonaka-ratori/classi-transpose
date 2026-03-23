@@ -14,7 +14,7 @@ type PieceCardProps = {
 };
 
 function PieceCard({ piece, isActive, onSelect }: PieceCardProps): React.JSX.Element {
-  const isUnavailable = piece.available === false;
+  const isUnavailable = piece.available !== true;
 
   const handleClick = useCallback(() => {
     if (!isUnavailable) onSelect(piece);
@@ -43,7 +43,7 @@ function PieceCard({ piece, isActive, onSelect }: PieceCardProps): React.JSX.Ele
         'border backdrop-blur-md',
         'focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-rose)]/50 focus-visible:ring-offset-1',
         isUnavailable
-          ? 'bg-white/20 border-white/10 opacity-60 cursor-default'
+          ? 'bg-white/20 border-white/10 opacity-50 cursor-not-allowed pointer-events-none'
           : isActive
             ? [
                 'bg-[color:var(--color-accent-rose-light)] border-[color:var(--color-accent-rose)]/50',
@@ -120,7 +120,7 @@ export function PieceList({ pieces }: PieceListProps): React.JSX.Element {
 
   const handleSelect = useCallback(
     (piece: MidiPiece) => {
-      if (!isLoading && piece.available !== false) void loadPreset(piece);
+      if (!isLoading && piece.available === true) void loadPreset(piece);
     },
     [loadPreset, isLoading],
   );
