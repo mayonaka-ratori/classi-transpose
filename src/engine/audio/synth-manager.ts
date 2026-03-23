@@ -5,7 +5,13 @@ import { computeChannelMutes } from '../midi/track-state';
 import { fetchWithProgress } from './soundfont-loader';
 
 const PROCESSOR_URL = '/spessasynth_processor.min.js';
-const HQ_SOUNDFONT_URL = '/soundfonts/GeneralUser-GS.sf2';
+/**
+ * The HQ SoundFont URL. Falls back to the local copy for development.
+ * Override in production by setting VITE_HQ_SOUNDFONT_URL in Vercel env vars.
+ */
+const HQ_SOUNDFONT_URL: string =
+  (import.meta.env.VITE_HQ_SOUNDFONT_URL as string | undefined) ??
+  '/soundfonts/GeneralUser-GS.sf2';
 const DRUM_CHANNEL = 9;
 const MIDI_CHANNELS = 16;
 

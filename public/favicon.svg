@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D81B60"/>
+      <stop offset="100%" stop-color="#880E4F"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Rounded-square background -->
+  <rect width="512" height="512" rx="108" fill="url(#bg)"/>
+
+  <!-- Double beam (♫) note shape -->
+
+  <!-- Note head: left -->
+  <ellipse cx="152" cy="298" rx="58" ry="42" fill="white" transform="rotate(-15 152 298)"/>
+  <!-- Note head: right -->
+  <ellipse cx="306" cy="255" rx="58" ry="42" fill="white" transform="rotate(-15 306 255)"/>
+
+  <!-- Stem: left -->
+  <rect x="198" y="148" width="20" height="155" rx="10" fill="white"/>
+  <!-- Stem: right -->
+  <rect x="352" y="108" width="20" height="153" rx="10" fill="white"/>
+
+  <!-- Beam 1 (top) -->
+  <path d="M196 148 L372 107 L372 133 L196 175 Z" fill="white"/>
+  <!-- Beam 2 (lower) -->
+  <path d="M196 183 L372 142 L372 168 L196 210 Z" fill="white"/>
+
+  <!-- "CT" wordmark -->
+  <text
+    x="256" y="450"
+    font-family="Georgia, 'Times New Roman', serif"
+    font-size="88"
+    font-weight="700"
+    fill="white"
+    text-anchor="middle"
+    opacity="0.92"
+    letter-spacing="4"
+  >CT</text>
+</svg>
