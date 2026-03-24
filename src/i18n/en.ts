@@ -86,6 +86,7 @@ export const en: Translations = {
     exporting: 'Exporting…',
     exportingAriaLabel: 'Exporting MIDI…',
     exportAriaLabel: 'Export MIDI file',
+    headerAriaLabel: 'Download MIDI file',
     error: 'Export failed. Please try again.',
   },
   errors: {

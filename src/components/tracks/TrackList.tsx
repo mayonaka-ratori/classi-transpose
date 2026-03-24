@@ -18,6 +18,51 @@ function trackIcon(track: MidiTrack): string {
   return '🎹';
 }
 
+// ── SVG icons ─────────────────────────────────────────────────────────────────
+
+function SpeakerOnIcon(): React.JSX.Element {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <path d="M19.07 4.93a10 10 0 0 1 0 14.14" />
+      <path d="M15.54 8.46a5 5 0 0 1 0 7.07" />
+    </svg>
+  );
+}
+
+function SpeakerOffIcon(): React.JSX.Element {
+  return (
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+      <line x1="23" y1="9" x2="17" y2="15" />
+      <line x1="17" y1="9" x2="23" y2="15" />
+    </svg>
+  );
+}
+
+function StarFilledIcon(): React.JSX.Element {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" aria-hidden="true"
+      fill="currentColor" stroke="currentColor" strokeWidth="1.5"
+      strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
+function StarOutlineIcon(): React.JSX.Element {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"
+      stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+    </svg>
+  );
+}
+
+// ── TrackRow ──────────────────────────────────────────────────────────────────
+
 type TrackRowProps = {
   track: MidiTrack;
   isEffectivelyMuted: boolean;
@@ -58,30 +103,35 @@ function TrackRow({
         isEffectivelyMuted ? 'opacity-40' : 'opacity-100',
       ].join(' ')}
     >
-      {/* Mute checkbox — checked = audible */}
-      <input
-        type="checkbox"
-        id={`track-mute-${track.index}`}
-        checked={!isMuted}
-        onChange={handleMuteChange}
+      {/* Speaker icon — mute toggle */}
+      <button
+        type="button"
+        onClick={handleMuteChange}
         aria-label={`${isMuted ? t.tracks.unmute : t.tracks.mute} ${trackLabel}`}
-        className="w-5 h-5 rounded cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-1 shrink-0"
-        style={{ accentColor: 'var(--color-accent-rose)' }}
-      />
+        aria-pressed={isMuted}
+        className={[
+          'w-10 h-10 rounded-lg shrink-0',
+          'flex items-center justify-center',
+          'border transition-all duration-200',
+          'focus-visible:ring-2 focus-visible:ring-offset-1',
+          isMuted
+            ? 'bg-[color:var(--color-accent-rose-light)] border-[color:var(--color-accent-rose)]/30 text-[color:var(--color-accent-rose)]'
+            : 'bg-white/40 border-white/30 text-[color:var(--color-text-tertiary)] hover:bg-white/60',
+        ].join(' ')}
+      >
+        {isMuted ? <SpeakerOffIcon /> : <SpeakerOnIcon />}
+      </button>
 
-      {/* Instrument icon */}
+      {/* Instrument emoji */}
       <span aria-hidden="true" className="text-base shrink-0">
         {trackIcon(track)}
       </span>
 
       {/* Track info */}
-      <label
-        htmlFor={`track-mute-${track.index}`}
-        className="flex-1 min-w-0 min-h-[44px] flex flex-col justify-center cursor-pointer"
-      >
+      <div className="flex-1 min-w-0 flex flex-col justify-center">
         <span
           className="block text-sm font-medium truncate"
-          style={{ color: 'var(--color-text-on-glass)' }}
+          style={{ color: isEffectivelyMuted ? 'var(--color-text-tertiary)' : 'var(--color-text-on-glass)' }}
         >
           {trackLabel}
         </span>
@@ -90,34 +140,17 @@ function TrackRow({
           {track.instrumentName ? ` · ${track.instrumentName}` : ''}
           {` · ${t.tracks.noteCount(track.noteCount)}`}
         </span>
-      </label>
+      </div>
 
-      {/* [M] Mute toggle button */}
-      <button
-        type="button"
-        onClick={handleMuteChange}
-        aria-label={`${isMuted ? t.tracks.unmute : t.tracks.mute} ${trackLabel}`}
-        aria-pressed={isMuted}
-        className={[
-          'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
-          'border transition-all duration-200',
-          'focus-visible:ring-2 focus-visible:ring-offset-1',
-          isMuted
-            ? 'bg-[color:var(--color-accent-rose-light)] border-[color:var(--color-accent-rose)]/30 text-[color:var(--color-accent-rose)]'
-            : 'bg-white/40 border-white/30 text-[color:var(--color-text-tertiary)] hover:bg-white/60',
-        ].join(' ')}
-      >
-        M
-      </button>
-
-      {/* [S] Solo toggle button */}
+      {/* Star icon — solo toggle */}
       <button
         type="button"
         onClick={handleSolo}
         aria-label={`${isSolo ? t.tracks.unsolo : t.tracks.solo} ${trackLabel}`}
         aria-pressed={isSolo}
         className={[
-          'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
+          'w-10 h-10 rounded-lg shrink-0',
+          'flex items-center justify-center',
           'border transition-all duration-200',
           'focus-visible:ring-2 focus-visible:ring-offset-1',
           isSolo
@@ -125,11 +158,13 @@ function TrackRow({
             : 'bg-white/40 border-white/30 text-[color:var(--color-text-tertiary)] hover:bg-white/60',
         ].join(' ')}
       >
-        S
+        {isSolo ? <StarFilledIcon /> : <StarOutlineIcon />}
       </button>
     </div>
   );
 }
+
+// ── TrackList ─────────────────────────────────────────────────────────────────
 
 export function TrackList(): React.JSX.Element {
   const tracks = useMidiStore((s) => s.tracks);

@@ -49,13 +49,21 @@ function SpinnerIcon(): React.JSX.Element {
 
 // ── ExportButton ──────────────────────────────────────────────────────────────
 
+type ExportButtonProps = {
+  /** When true, renders a compact icon-only button suitable for the app header. */
+  compact?: boolean;
+};
+
 /**
- * Full-width MIDI export button.
+ * MIDI export button.
  *
  * Reads the current transpose + BPM from stores, builds a modified MIDI binary,
- * and triggers a browser download. Follows the design-system green gradient style.
+ * and triggers a browser download.
+ *
+ * - `compact=false` (default): full-width green gradient button with label.
+ * - `compact=true`: small glass icon button for placement in the header.
  */
-export function ExportButton(): React.JSX.Element {
+export function ExportButton({ compact = false }: ExportButtonProps): React.JSX.Element {
   const [isExporting, setIsExporting] = useState(false);
   const [exportError, setExportError] = useState<string | null>(null);
 
@@ -112,6 +120,32 @@ export function ExportButton(): React.JSX.Element {
     }, 0);
   }, [rawMidiData, isExporting, transposeSemitones, tempoScale, originalBpm, fileName, t]);
 
+  // ── Compact mode (header icon button) ────────────────────────────────────────
+  if (compact) {
+    return (
+      <button
+        type="button"
+        onClick={handleExport}
+        disabled={!hasFile || isExporting}
+        aria-label={isExporting ? t.export.exportingAriaLabel : t.export.headerAriaLabel}
+        aria-busy={isExporting}
+        className={[
+          'w-10 h-10 flex items-center justify-center rounded-xl',
+          'bg-white/40 backdrop-blur-md border border-white/30',
+          'transition-all duration-200',
+          'focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-green)]/50 focus-visible:ring-offset-2',
+          hasFile && !isExporting
+            ? 'hover:bg-white/60 hover:scale-105 active:scale-95 cursor-pointer'
+            : 'opacity-40 cursor-not-allowed',
+        ].join(' ')}
+        style={{ color: hasFile ? 'var(--color-accent-green)' : 'var(--color-text-tertiary)' }}
+      >
+        {isExporting ? <SpinnerIcon /> : <DownloadIcon />}
+      </button>
+    );
+  }
+
+  // ── Full mode (green gradient button) ─────────────────────────────────────────
   return (
     <div className="flex flex-col gap-2 w-full">
       {/* Section label */}

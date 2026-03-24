@@ -84,6 +84,7 @@ export type Translations = {
     exporting: string;
     exportingAriaLabel: string;
     exportAriaLabel: string;
+    headerAriaLabel: string;
     error: string;
   };
   errors: {

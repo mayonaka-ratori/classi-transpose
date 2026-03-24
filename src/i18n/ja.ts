@@ -86,6 +86,7 @@ export const ja: Translations = {
     exporting: 'エクスポート中…',
     exportingAriaLabel: 'MIDIをエクスポート中…',
     exportAriaLabel: 'MIDIファイルをエクスポート',
+    headerAriaLabel: 'MIDIファイルをダウンロード',
     error: 'エクスポートに失敗しました。もう一度お試しください。',
   },
   errors: {

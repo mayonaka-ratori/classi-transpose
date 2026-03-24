@@ -10,7 +10,6 @@ import { FileUploader } from '../file/FileUploader';
 import { PlayerControl } from '../controls/PlayerControl';
 import { TransposeControl } from '../controls/TransposeControl';
 import { BpmControl } from '../controls/BpmControl';
-import { ExportButton } from '../controls/ExportButton';
 import { TrackList } from '../tracks/TrackList';
 import { MidiLibrary } from '../library/MidiLibrary';
 
@@ -299,14 +298,6 @@ export function MobileLayout(): React.JSX.Element {
             className={`${GLASS_CARD} animate-card-enter stagger-5`}
           >
             <TrackList />
-          </section>
-
-          {/* Export */}
-          <section
-            aria-label="Export controls"
-            className={`${GLASS_CARD} animate-card-enter stagger-5`}
-          >
-            <ExportButton />
           </section>
 
           {/* Collapsible library + file uploader — mobile only */}
