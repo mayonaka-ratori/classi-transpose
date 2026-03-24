@@ -113,13 +113,17 @@ export function FileUploader(): React.JSX.Element {
               className="text-base font-semibold text-center"
               style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
             >
-              Drop your MIDI file here
+              {typeof window !== 'undefined' && 'ontouchstart' in window
+                ? 'タップして MIDI ファイルを選択'
+                : 'Drop your MIDI file here'}
             </span>
             <span
               className="text-xs text-center"
               style={{ color: 'var(--color-text-tertiary)' }}
             >
-              or click to browse (.mid / .midi)
+              {typeof window !== 'undefined' && 'ontouchstart' in window
+                ? '(.mid / .midi)'
+                : 'or click to browse (.mid / .midi)'}
             </span>
           </>
         )}

@@ -50,7 +50,7 @@ function SongInfoCard(): React.JSX.Element {
     >
       {/* Title */}
       <p
-        className="text-xl md:text-2xl font-semibold leading-snug truncate"
+        className="text-xl md:text-2xl font-semibold leading-snug line-clamp-2"
         style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
       >
         {title || fileName}
@@ -116,7 +116,7 @@ function CollapsibleLibrary(): React.JSX.Element {
         aria-controls="library-panel"
         onClick={toggle}
         className={[
-          'lg:hidden w-full flex items-center justify-between gap-2',
+          'lg:hidden w-full min-h-[44px] flex items-center justify-between gap-2',
           'outline-none focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-rose)]/50',
         ].join(' ')}
       >

@@ -69,8 +69,12 @@ export function MidiLibrary(): React.JSX.Element {
 
       {/* Piece cards */}
       <div
-        className="overflow-y-auto pr-0.5"
-        style={{ maxHeight: '380px' }}
+        className="overflow-y-auto pr-0.5 [&::-webkit-scrollbar]:hidden"
+        style={{
+          maxHeight: 'min(60vh, 500px)',
+          overscrollBehavior: 'contain',
+          WebkitOverflowScrolling: 'touch',
+        }}
       >
         <PieceList pieces={pieces} />
       </div>

@@ -267,3 +267,16 @@ body {
     animation: none;
   }
 }
+
+/* ─────────────────────────────────────────
+   Mobile performance — disable heavy blob
+   animations on small screens to prevent
+   GPU/battery drain on low-end devices
+   ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  .animate-blob-float-1,
+  .animate-blob-float-2,
+  .animate-blob-float-3 {
+    animation: none !important;
+  }
+}
