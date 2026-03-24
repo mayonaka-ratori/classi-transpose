@@ -6,7 +6,7 @@ export function Header(): React.JSX.Element {
         'bg-white/40 backdrop-blur-2xl',
         'border-b border-white/20',
       ].join(' ')}
-      style={{ minHeight: '56px' }}
+      style={{ minHeight: '56px', paddingTop: 'env(safe-area-inset-top)' }}
     >
       {/* Left: gold music note + app title */}
       <div className="flex items-center gap-2">

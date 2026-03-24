@@ -31,7 +31,11 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
       role="tablist"
       aria-label="Filter by category"
       className="flex gap-2 overflow-x-auto pb-1 scrollbar-none"
-      style={{ WebkitOverflowScrolling: 'touch' }}
+      style={{
+        WebkitOverflowScrolling: 'touch',
+        maskImage: 'linear-gradient(90deg, transparent, black 12px, black calc(100% - 12px), transparent)',
+        WebkitMaskImage: 'linear-gradient(90deg, transparent, black 12px, black calc(100% - 12px), transparent)',
+      }}
     >
       {/* "All" pill */}
       <button
@@ -41,7 +45,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
         onClick={handleClick('all')}
         onKeyDown={handleKeyDown('all')}
         className={[
-          'flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-medium',
+          'flex-shrink-0 px-4 py-2.5 min-h-[44px] rounded-full text-xs font-medium',
           'border transition-all duration-200 outline-none',
           'focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-rose)]/50 focus-visible:ring-offset-1',
           allIsActive
@@ -64,7 +68,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
             onClick={handleClick(cat.id)}
             onKeyDown={handleKeyDown(cat.id)}
             className={[
-              'flex-shrink-0 px-4 py-1.5 rounded-full text-xs font-medium',
+              'flex-shrink-0 px-4 py-2.5 min-h-[44px] rounded-full text-xs font-medium',
               'border transition-all duration-200 outline-none',
               'focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-rose)]/50 focus-visible:ring-offset-1',
               isActive

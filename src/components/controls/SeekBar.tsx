@@ -32,10 +32,10 @@ export function SeekBar(): React.JSX.Element {
 
   return (
     /* Minimum 44px touch target via py-3 wrapper */
-    <div className="flex items-center gap-3 w-full py-1">
+    <div className="flex items-center gap-3 w-full py-3">
       {/* Elapsed time */}
       <span
-        className="shrink-0 w-10 text-right text-xs tabular-nums"
+        className="shrink-0 w-12 text-right text-xs tabular-nums"
         style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-tertiary)' }}
       >
         {formatTime(currentTime)}
@@ -85,7 +85,7 @@ export function SeekBar(): React.JSX.Element {
 
       {/* Total time */}
       <span
-        className="shrink-0 w-10 text-xs tabular-nums"
+        className="shrink-0 w-12 text-xs tabular-nums"
         style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-tertiary)' }}
       >
         {formatTime(duration)}

@@ -161,7 +161,7 @@ export function MobileLayout(): React.JSX.Element {
     return (
       <>
         <AmbientBackground />
-        <div className="flex flex-col gap-4 pb-8 lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
+        <div className="flex flex-col gap-4 pb-[calc(2rem+env(safe-area-inset-bottom))] lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
 
           {/* Left: Library (prominent) + FileUploader (secondary) */}
           <div className="flex flex-col gap-4">
@@ -220,7 +220,7 @@ export function MobileLayout(): React.JSX.Element {
           Left col  40% → library browser
           Right col 60% → song info + controls
       */}
-      <div className="flex flex-col gap-4 pb-8 lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
+      <div className="flex flex-col gap-4 pb-[calc(2rem+env(safe-area-inset-bottom))] lg:grid lg:grid-cols-[2fr_3fr] lg:items-start lg:gap-5">
 
         {/* ── LEFT COLUMN (desktop) / bottom (mobile) ─────────────── */}
         <div className="flex flex-col gap-4 order-last lg:order-first">

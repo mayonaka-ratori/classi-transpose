@@ -62,7 +62,7 @@ function TrackRow({
         checked={!isMuted}
         onChange={handleMuteChange}
         aria-label={`${isMuted ? 'Unmute' : 'Mute'} ${trackLabel}`}
-        className="w-4 h-4 rounded cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-1"
+        className="w-5 h-5 rounded cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-1 shrink-0"
         style={{ accentColor: 'var(--color-accent-rose)' }}
       />
 
@@ -74,7 +74,7 @@ function TrackRow({
       {/* Track info */}
       <label
         htmlFor={`track-mute-${track.index}`}
-        className="flex-1 min-w-0 cursor-pointer"
+        className="flex-1 min-w-0 min-h-[44px] flex flex-col justify-center cursor-pointer"
       >
         <span
           className="block text-sm font-medium truncate"
@@ -96,7 +96,7 @@ function TrackRow({
         aria-label={`${isMuted ? 'Unmute' : 'Mute'} ${trackLabel}`}
         aria-pressed={isMuted}
         className={[
-          'w-7 h-7 rounded-lg text-xs font-bold shrink-0',
+          'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
           'border transition-all duration-200',
           'focus-visible:ring-2 focus-visible:ring-offset-1',
           isMuted
@@ -114,7 +114,7 @@ function TrackRow({
         aria-label={`${isSolo ? 'Unsolo' : 'Solo'} ${trackLabel}`}
         aria-pressed={isSolo}
         className={[
-          'w-7 h-7 rounded-lg text-xs font-bold shrink-0',
+          'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
           'border transition-all duration-200',
           'focus-visible:ring-2 focus-visible:ring-offset-1',
           isSolo

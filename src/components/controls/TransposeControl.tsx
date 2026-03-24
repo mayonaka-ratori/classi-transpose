@@ -98,7 +98,7 @@ export function TransposeControl(): React.JSX.Element {
           disabled={semitones <= MIN_TRANSPOSE_SEMITONES}
           aria-label="Transpose down 1 semitone"
           className={[
-            'w-9 h-9 rounded-full shrink-0 flex items-center justify-center',
+            'w-11 h-11 rounded-full shrink-0 flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',
             'text-lg font-bold',
             'transition-all duration-200',
@@ -132,7 +132,7 @@ export function TransposeControl(): React.JSX.Element {
           disabled={semitones >= MAX_TRANSPOSE_SEMITONES}
           aria-label="Transpose up 1 semitone"
           className={[
-            'w-9 h-9 rounded-full shrink-0 flex items-center justify-center',
+            'w-11 h-11 rounded-full shrink-0 flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',
             'text-lg font-bold',
             'transition-all duration-200',

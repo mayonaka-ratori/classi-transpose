@@ -10,7 +10,13 @@ export function App(): React.JSX.Element {
      */
     <div className="min-h-screen" style={{ color: 'var(--color-text-primary)', position: 'relative', zIndex: 1 }}>
       <Header />
-      <main className="container mx-auto px-4 py-6 max-w-[1200px]">
+      <main
+        className="container mx-auto py-6 max-w-[1200px]"
+        style={{
+          paddingLeft: 'max(1rem, env(safe-area-inset-left))',
+          paddingRight: 'max(1rem, env(safe-area-inset-right))',
+        }}
+      >
         <MobileLayout />
       </main>
     </div>

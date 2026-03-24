@@ -122,7 +122,7 @@ export function BpmControl(): React.JSX.Element {
             onKeyDown={handleInputKeyDown}
             aria-label="BPM value"
             className={[
-              'w-24 px-3 py-1.5 rounded-xl text-sm text-right tabular-nums',
+              'w-24 px-3 py-2.5 rounded-xl text-sm text-right tabular-nums',
               'bg-white/40 backdrop-blur-md border border-white/30',
               'focus:outline-none focus-visible:ring-2',
               'focus-visible:ring-[color:var(--color-accent-rose)]/50',
@@ -145,7 +145,7 @@ export function BpmControl(): React.JSX.Element {
           disabled={tempoScale === 1.0}
           aria-label="Reset tempo to original"
           className={[
-            'px-4 py-1.5 rounded-full text-xs font-semibold',
+            'px-4 py-2.5 rounded-full text-xs font-semibold',
             'bg-white/40 backdrop-blur-md border border-white/30',
             'transition-all duration-200',
             'hover:bg-white/60 hover:border-white/50',

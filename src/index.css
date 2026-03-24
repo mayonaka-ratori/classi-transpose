@@ -143,8 +143,8 @@ body {
 .slider-indigo::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #5C6BC0;
@@ -156,8 +156,8 @@ body {
   transform: scale(1.15);
 }
 .slider-indigo::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #5C6BC0;
@@ -185,8 +185,8 @@ body {
 .slider-teal::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #26A69A;
@@ -198,8 +198,8 @@ body {
   transform: scale(1.15);
 }
 .slider-teal::-moz-range-thumb {
-  width: 22px;
-  height: 22px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #26A69A;
@@ -227,8 +227,8 @@ body {
 .slider-rose::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #C2185B;
@@ -240,8 +240,8 @@ body {
   transform: scale(1.2);
 }
 .slider-rose::-moz-range-thumb {
-  width: 14px;
-  height: 14px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #ffffff;
   border: 2px solid #C2185B;

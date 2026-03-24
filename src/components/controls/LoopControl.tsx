@@ -54,7 +54,8 @@ export function LoopControl(): React.JSX.Element {
 
   /* Shared glass pill button base classes */
   const pillBase = [
-    'px-4 py-1.5 rounded-full text-sm font-semibold',
+    'px-4 py-2.5 min-h-[44px] rounded-full text-sm font-semibold',
+    'flex items-center justify-center',
     'border transition-all duration-200',
     'focus-visible:ring-2 focus-visible:ring-offset-2',
     'disabled:opacity-40 disabled:cursor-not-allowed',
@@ -140,7 +141,7 @@ export function LoopControl(): React.JSX.Element {
             onClick={handleClear}
             aria-label="Clear A-B loop"
             className={[
-              'px-3 py-1 rounded-full text-xs border',
+              'px-3 py-2 rounded-full text-xs border',
               'bg-white/30 backdrop-blur-md border-white/30',
               'hover:bg-white/50 hover:border-white/50',
               'transition-all duration-200',

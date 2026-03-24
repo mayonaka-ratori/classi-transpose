@@ -125,7 +125,7 @@ export function PlayerControl(): React.JSX.Element {
           disabled={!hasMidi || isLoadingSF}
           aria-label="Stop"
           className={[
-            'w-10 h-10 rounded-full flex items-center justify-center',
+            'w-11 h-11 rounded-full flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',
             'transition-all duration-200',
             'hover:bg-white/60 hover:scale-105 active:scale-95',
