@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 
 import { useMidiStore } from '../../stores/useMidiStore';
 import { usePlayerStore } from '../../stores/usePlayerStore';
+import { useTranslation } from '../../i18n';
 import { buildExportedMidi, buildExportFileName } from '../../utils/midi-export';
 
 // ── Download icon (SVG) ───────────────────────────────────────────────────────
@@ -66,6 +67,7 @@ export function ExportButton(): React.JSX.Element {
   const tempoScale = usePlayerStore((s) => s.tempoScale);
 
   const hasFile = rawMidiData !== null;
+  const { t } = useTranslation();
 
   const handleExport = useCallback((): void => {
     if (!rawMidiData || isExporting) return;
@@ -102,13 +104,13 @@ export function ExportButton(): React.JSX.Element {
         setExportError(null);
       } catch (err) {
         const message =
-          err instanceof Error ? err.message : 'Export failed. Please try again.';
+          err instanceof Error ? err.message : t.export.error;
         setExportError(message);
       } finally {
         setIsExporting(false);
       }
     }, 0);
-  }, [rawMidiData, isExporting, transposeSemitones, tempoScale, originalBpm, fileName]);
+  }, [rawMidiData, isExporting, transposeSemitones, tempoScale, originalBpm, fileName, t]);
 
   return (
     <div className="flex flex-col gap-2 w-full">
@@ -117,7 +119,7 @@ export function ExportButton(): React.JSX.Element {
         className="text-xs font-semibold uppercase tracking-widest"
         style={{ color: 'var(--color-text-tertiary)', fontFamily: 'var(--font-sans)' }}
       >
-        Export
+        {t.export.label}
       </p>
 
       {/* Export button — green gradient per design-system.md */}
@@ -125,7 +127,7 @@ export function ExportButton(): React.JSX.Element {
         type="button"
         onClick={handleExport}
         disabled={!hasFile || isExporting}
-        aria-label={isExporting ? 'Exporting MIDI…' : 'Export MIDI file'}
+        aria-label={isExporting ? t.export.exportingAriaLabel : t.export.exportAriaLabel}
         aria-busy={isExporting}
         className={[
           'w-full py-3 flex items-center justify-center gap-2',
@@ -146,7 +148,7 @@ export function ExportButton(): React.JSX.Element {
         }}
       >
         {isExporting ? <SpinnerIcon /> : <DownloadIcon />}
-        <span>{isExporting ? 'Exporting…' : 'Export MIDI'}</span>
+        <span>{isExporting ? t.export.exporting : t.export.button}</span>
       </button>
 
       {/* Inline error message */}

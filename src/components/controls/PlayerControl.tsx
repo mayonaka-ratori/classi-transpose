@@ -3,6 +3,7 @@ import { useCallback } from 'react';
 import { usePlayerStore } from '../../stores/usePlayerStore';
 import { useMidiStore } from '../../stores/useMidiStore';
 import { useAudioStore } from '../../stores/useAudioStore';
+import { useTranslation } from '../../i18n';
 import { SeekBar } from './SeekBar';
 import { LoopControl } from './LoopControl';
 
@@ -14,6 +15,7 @@ function SfLoadingPanel(): React.JSX.Element {
   const sfError = useAudioStore((s) => s.sfError);
   const clearError = useAudioStore((s) => s.clearError);
   const loadSoundFont = useAudioStore((s) => s.loadSoundFont);
+  const { t } = useTranslation();
 
   if (sfLoadState === 'loaded' || sfLoadState === 'idle') return <></>;
 
@@ -28,7 +30,7 @@ function SfLoadingPanel(): React.JSX.Element {
           className="text-sm text-center leading-snug"
           style={{ color: 'var(--color-accent-rose)' }}
         >
-          音源の読み込みに失敗しました。ネットワーク接続を確認してください。
+          {t.player.sfError}
         </p>
         {sfError && (
           <p className="text-xs text-center opacity-70" style={{ color: 'var(--color-accent-rose)' }}>
@@ -45,7 +47,7 @@ function SfLoadingPanel(): React.JSX.Element {
           ].join(' ')}
           style={{ background: 'linear-gradient(135deg, #C2185B, #AD1457)' }}
         >
-          再試行
+          {t.player.sfRetry}
         </button>
       </div>
     );
@@ -58,14 +60,14 @@ function SfLoadingPanel(): React.JSX.Element {
         className="text-sm font-medium"
         style={{ color: 'var(--color-text-secondary)' }}
       >
-        音源を読み込んでいます… {sfLoadProgress}%
+        {t.player.sfLoading(sfLoadProgress)}
       </p>
       <div
         role="progressbar"
         aria-valuenow={sfLoadProgress}
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-label="SoundFont download progress"
+        aria-label={t.player.sfProgressAriaLabel}
         className="w-full h-2 rounded-full overflow-hidden"
         style={{ backgroundColor: 'rgba(0,0,0,0.08)' }}
       >
@@ -92,6 +94,7 @@ export function PlayerControl(): React.JSX.Element {
   const sfLoadState = useAudioStore((s) => s.sfLoadState);
 
   const isLoadingSF = sfLoadState === 'loading';
+  const { t } = useTranslation();
 
   const handlePlayPause = useCallback((): void => {
     if (isPlaying) {
@@ -123,7 +126,7 @@ export function PlayerControl(): React.JSX.Element {
           type="button"
           onClick={handleStop}
           disabled={!hasMidi || isLoadingSF}
-          aria-label="Stop"
+          aria-label={t.player.stop}
           className={[
             'w-11 h-11 rounded-full flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',
@@ -142,7 +145,7 @@ export function PlayerControl(): React.JSX.Element {
           type="button"
           onClick={handlePlayPause}
           disabled={!hasMidi || isLoadingSF}
-          aria-label={isPlaying ? 'Pause' : 'Play'}
+          aria-label={isPlaying ? t.player.pause : t.player.play}
           className={[
             'w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center',
             'text-white text-xl font-bold',

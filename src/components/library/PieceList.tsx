@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
 import type { MidiPiece } from '../../data/midi-catalog';
 
 type PieceListProps = {
@@ -14,6 +15,9 @@ type PieceCardProps = {
 };
 
 function PieceCard({ piece, isActive, onSelect }: PieceCardProps): React.JSX.Element {
+  const { lang } = useTranslation();
+  const displayTitle = lang === 'ja' && piece.titleJa ? piece.titleJa : piece.title;
+
   const handleClick = useCallback(() => {
     onSelect(piece);
   }, [piece, onSelect]);
@@ -31,7 +35,7 @@ function PieceCard({ piece, isActive, onSelect }: PieceCardProps): React.JSX.Ele
   return (
     <button
       type="button"
-      aria-label={`Load ${piece.title}`}
+      aria-label={`Load ${displayTitle}`}
       aria-pressed={isActive}
       onClick={handleClick}
       onKeyDown={handleKeyDown}
@@ -58,7 +62,7 @@ function PieceCard({ piece, isActive, onSelect }: PieceCardProps): React.JSX.Ele
               : 'var(--color-text-on-glass)',
           }}
         >
-          {piece.title}
+          {displayTitle}
         </p>
       </div>
 
@@ -97,6 +101,7 @@ export function PieceList({ pieces }: PieceListProps): React.JSX.Element {
   const currentPiece = useMidiStore((s) => s.currentPiece);
   const loadPreset = useMidiStore((s) => s.loadPreset);
   const isLoading = useMidiStore((s) => s.isLoading);
+  const { t } = useTranslation();
 
   const handleSelect = useCallback(
     (piece: MidiPiece) => {
@@ -111,7 +116,7 @@ export function PieceList({ pieces }: PieceListProps): React.JSX.Element {
         className="text-sm text-center py-6"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        No pieces found in this category.
+        {t.library.emptyCategory}
       </p>
     );
   }

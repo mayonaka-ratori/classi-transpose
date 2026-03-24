@@ -1,7 +1,19 @@
 import { useCallback, useRef, useState } from 'react';
 
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
+import type { Translations } from '../../i18n';
 import { readFileAsArrayBuffer } from '../../utils/file-helpers';
+
+/** Map a store error code (key) to a user-facing translated message. */
+function formatMidiError(code: string, t: Translations): string {
+  if (code === 'invalidType') return t.upload.invalidType;
+  if (code.startsWith('missingFile:')) return t.errors.missingFile(code.slice(12));
+  const errKey = code as keyof typeof t.errors;
+  const val = t.errors[errKey];
+  if (typeof val === 'string') return val;
+  return code;
+}
 
 export function FileUploader(): React.JSX.Element {
   const loadFile = useMidiStore((s) => s.loadFile);
@@ -12,10 +24,11 @@ export function FileUploader(): React.JSX.Element {
 
   const [isDragging, setIsDragging] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
+  const { t } = useTranslation();
 
   const handleFile = useCallback(async (file: File): Promise<void> => {
     if (!file.name.toLowerCase().endsWith('.mid') && !file.name.toLowerCase().endsWith('.midi')) {
-      setLoadError('Please select a .mid or .midi file.');
+      setLoadError('invalidType');
       return;
     }
     try {
@@ -98,7 +111,7 @@ export function FileUploader(): React.JSX.Element {
             className="text-sm"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Loading…
+            {t.upload.loading}
           </span>
         ) : fileName ? (
           <span
@@ -113,17 +126,13 @@ export function FileUploader(): React.JSX.Element {
               className="text-base font-semibold text-center"
               style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
             >
-              {typeof window !== 'undefined' && 'ontouchstart' in window
-                ? 'タップして MIDI ファイルを選択'
-                : 'Drop your MIDI file here'}
+              {t.upload.dropHint}
             </span>
             <span
               className="text-xs text-center"
               style={{ color: 'var(--color-text-tertiary)' }}
             >
-              {typeof window !== 'undefined' && 'ontouchstart' in window
-                ? '(.mid / .midi)'
-                : 'or click to browse (.mid / .midi)'}
+              {t.upload.browseHint}
             </span>
           </>
         )}
@@ -135,7 +144,7 @@ export function FileUploader(): React.JSX.Element {
           className="mt-2 text-xs px-1"
           style={{ color: '#C62828' }}
         >
-          {loadError}
+          {formatMidiError(loadError, t)}
         </p>
       )}
 

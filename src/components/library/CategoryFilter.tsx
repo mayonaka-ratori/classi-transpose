@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import { CATEGORIES } from '../../data/midi-catalog';
 import type { MidiCategory } from '../../data/midi-catalog';
+import { useTranslation } from '../../i18n';
 
 type CategoryFilterProps = {
   selected: MidiCategory | 'all';
@@ -9,6 +10,8 @@ type CategoryFilterProps = {
 };
 
 export function CategoryFilter({ selected, onChange }: CategoryFilterProps): React.JSX.Element {
+  const { lang, t } = useTranslation();
+
   const handleClick = useCallback(
     (id: MidiCategory | 'all') => () => { onChange(id); },
     [onChange],
@@ -29,7 +32,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
   return (
     <div
       role="tablist"
-      aria-label="Filter by category"
+      aria-label={t.library.filterAriaLabel}
       className="flex gap-2 overflow-x-auto pb-1 scrollbar-none"
       style={{
         WebkitOverflowScrolling: 'touch',
@@ -54,7 +57,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
         ].join(' ')}
         style={allIsActive ? {} : { color: 'var(--color-text-secondary)' }}
       >
-        All
+        {t.library.allCategory}
       </button>
 
       {CATEGORIES.map((cat) => {
@@ -77,7 +80,7 @@ export function CategoryFilter({ selected, onChange }: CategoryFilterProps): Rea
             ].join(' ')}
             style={isActive ? {} : { color: 'var(--color-text-secondary)' }}
           >
-            {cat.label}
+            {lang === 'ja' ? cat.labelJa : cat.label}
           </button>
         );
       })}

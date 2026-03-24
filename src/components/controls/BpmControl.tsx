@@ -1,6 +1,7 @@
 import { useCallback, useState, useEffect } from 'react';
 
 import { usePlayerStore } from '../../stores/usePlayerStore';
+import { useTranslation } from '../../i18n';
 import { MIN_TEMPO_SCALE, MAX_TEMPO_SCALE, MAX_BPM } from '../../utils/constants';
 
 const MIN_BPM = 1;
@@ -10,6 +11,7 @@ export function BpmControl(): React.JSX.Element {
   const tempoScale = usePlayerStore((s) => s.tempoScale);
   const setTempoScale = usePlayerStore((s) => s.setTempoScale);
 
+  const { t } = useTranslation();
   const currentBpm = Math.round(originalBpm * tempoScale);
   const percentLabel = `${Math.round(tempoScale * 100)}%`;
 
@@ -59,7 +61,7 @@ export function BpmControl(): React.JSX.Element {
         className="text-xs font-semibold uppercase tracking-widest"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        Tempo
+        {t.tempo.label}
       </h2>
 
       {/* Large BPM display */}
@@ -74,7 +76,7 @@ export function BpmControl(): React.JSX.Element {
           className="text-sm"
           style={{ color: 'var(--color-text-secondary)' }}
         >
-          BPM
+          {t.tempo.bpm}
         </span>
       </div>
 
@@ -88,7 +90,7 @@ export function BpmControl(): React.JSX.Element {
           className="ml-2 text-xs"
           style={{ fontFamily: 'var(--font-sans)', color: 'var(--color-text-tertiary)' }}
         >
-          original {Math.round(originalBpm)} BPM · max {MAX_BPM}
+          {t.tempo.originalBpm(Math.round(originalBpm), MAX_BPM)}
         </span>
       </p>
 
@@ -100,7 +102,7 @@ export function BpmControl(): React.JSX.Element {
         step={0.01}
         value={tempoScale}
         onChange={handleSliderChange}
-        aria-label="Tempo scale"
+        aria-label={t.tempo.sliderAriaLabel}
         aria-valuemin={MIN_TEMPO_SCALE}
         aria-valuemax={sliderMax}
         aria-valuenow={tempoScale}
@@ -110,7 +112,7 @@ export function BpmControl(): React.JSX.Element {
       {/* Numeric BPM input + reset */}
       <div className="flex items-center gap-3">
         <div className="flex items-center gap-1.5 flex-1">
-          <label htmlFor="bpm-input" className="sr-only">BPM</label>
+          <label htmlFor="bpm-input" className="sr-only">{t.tempo.bpm}</label>
           <input
             id="bpm-input"
             type="number"
@@ -120,7 +122,7 @@ export function BpmControl(): React.JSX.Element {
             onChange={handleInputChange}
             onBlur={handleInputBlur}
             onKeyDown={handleInputKeyDown}
-            aria-label="BPM value"
+            aria-label={t.tempo.inputAriaLabel}
             className={[
               'w-24 px-3 py-2.5 rounded-xl text-sm text-right tabular-nums',
               'bg-white/40 backdrop-blur-md border border-white/30',
@@ -134,7 +136,7 @@ export function BpmControl(): React.JSX.Element {
             className="text-xs"
             style={{ color: 'var(--color-text-tertiary)' }}
           >
-            BPM
+            {t.tempo.bpm}
           </span>
         </div>
 
@@ -143,7 +145,7 @@ export function BpmControl(): React.JSX.Element {
           type="button"
           onClick={handleReset}
           disabled={tempoScale === 1.0}
-          aria-label="Reset tempo to original"
+          aria-label={t.tempo.resetAriaLabel}
           className={[
             'px-4 py-2.5 rounded-full text-xs font-semibold',
             'bg-white/40 backdrop-blur-md border border-white/30',
@@ -154,7 +156,7 @@ export function BpmControl(): React.JSX.Element {
           ].join(' ')}
           style={{ color: 'var(--color-text-secondary)' }}
         >
-          Reset
+          {t.tempo.reset}
         </button>
       </div>
     </div>

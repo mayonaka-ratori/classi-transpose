@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
 import { getEffectiveMutedTracks } from '../../engine/midi/track-state';
 import type { MidiTrack } from '../../types/midi';
 
@@ -34,6 +35,8 @@ function TrackRow({
   onToggleMute,
   onToggleSolo,
 }: TrackRowProps): React.JSX.Element {
+  const { t } = useTranslation();
+
   const handleMuteChange = useCallback((): void => {
     onToggleMute(track.index);
   }, [onToggleMute, track.index]);
@@ -42,8 +45,8 @@ function TrackRow({
     onToggleSolo(track.index);
   }, [onToggleSolo, track.index]);
 
-  const trackLabel = track.name || `Track ${track.index + 1}`;
-  const channelLabel = track.channel !== null ? `Ch ${track.channel + 1}` : 'Multi';
+  const trackLabel = track.name || t.tracks.trackFallback(track.index + 1);
+  const channelLabel = track.channel !== null ? t.tracks.channel(track.channel + 1) : t.tracks.multi;
 
   return (
     <div
@@ -61,7 +64,7 @@ function TrackRow({
         id={`track-mute-${track.index}`}
         checked={!isMuted}
         onChange={handleMuteChange}
-        aria-label={`${isMuted ? 'Unmute' : 'Mute'} ${trackLabel}`}
+        aria-label={`${isMuted ? t.tracks.unmute : t.tracks.mute} ${trackLabel}`}
         className="w-5 h-5 rounded cursor-pointer focus-visible:ring-2 focus-visible:ring-offset-1 shrink-0"
         style={{ accentColor: 'var(--color-accent-rose)' }}
       />
@@ -85,7 +88,7 @@ function TrackRow({
         <span className="block text-xs truncate" style={{ color: 'var(--color-text-tertiary)' }}>
           {channelLabel}
           {track.instrumentName ? ` · ${track.instrumentName}` : ''}
-          {` · ${track.noteCount} notes`}
+          {` · ${t.tracks.noteCount(track.noteCount)}`}
         </span>
       </label>
 
@@ -93,7 +96,7 @@ function TrackRow({
       <button
         type="button"
         onClick={handleMuteChange}
-        aria-label={`${isMuted ? 'Unmute' : 'Mute'} ${trackLabel}`}
+        aria-label={`${isMuted ? t.tracks.unmute : t.tracks.mute} ${trackLabel}`}
         aria-pressed={isMuted}
         className={[
           'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
@@ -111,7 +114,7 @@ function TrackRow({
       <button
         type="button"
         onClick={handleSolo}
-        aria-label={`${isSolo ? 'Unsolo' : 'Solo'} ${trackLabel}`}
+        aria-label={`${isSolo ? t.tracks.unsolo : t.tracks.solo} ${trackLabel}`}
         aria-pressed={isSolo}
         className={[
           'w-10 h-10 rounded-lg text-xs font-bold shrink-0',
@@ -134,6 +137,7 @@ export function TrackList(): React.JSX.Element {
   const soloTracks = useMidiStore((s) => s.soloTracks);
   const toggleMuteTrack = useMidiStore((s) => s.toggleMuteTrack);
   const toggleSoloTrack = useMidiStore((s) => s.toggleSoloTrack);
+  const { t } = useTranslation();
 
   if (tracks.length === 0) return <></>;
 
@@ -147,11 +151,11 @@ export function TrackList(): React.JSX.Element {
           className="text-xs font-semibold uppercase tracking-widest"
           style={{ color: 'var(--color-text-tertiary)' }}
         >
-          Tracks
+          {t.tracks.label}
         </h3>
         {hasSolo && (
           <span className="text-xs font-semibold" style={{ color: 'var(--color-accent-rose)' }}>
-            Solo active
+            {t.tracks.soloActive}
           </span>
         )}
       </div>

@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 
 import { useMidiPlayer } from '../../hooks/useMidiPlayer';
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
 
 import { AmbientBackground } from './AmbientBackground';
 import { FileUploader } from '../file/FileUploader';
@@ -103,6 +104,7 @@ function SongInfoCard(): React.JSX.Element {
 function CollapsibleLibrary(): React.JSX.Element {
   const [open, setOpen] = useState(false);
   const toggle = useCallback(() => setOpen((v) => !v), []);
+  const { t } = useTranslation();
 
   return (
     <section
@@ -124,7 +126,7 @@ function CollapsibleLibrary(): React.JSX.Element {
           className="text-sm font-semibold"
           style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
         >
-          MIDI Library
+          {t.library.title}
         </span>
         <svg
           width="18"
@@ -154,6 +156,7 @@ export function MobileLayout(): React.JSX.Element {
   useMidiPlayer();
 
   const parsedMidi = useMidiStore((s) => s.parsedMidi);
+  const { t } = useTranslation();
 
   if (!parsedMidi) {
     // ── No song loaded ──────────────────────────────────────────────
@@ -181,7 +184,7 @@ export function MobileLayout(): React.JSX.Element {
                 className="text-xs mb-3"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
-                Or upload your own .mid file:
+                {t.library.uploadOwn}
               </p>
               <FileUploader />
             </section>
@@ -197,7 +200,7 @@ export function MobileLayout(): React.JSX.Element {
                 className="text-sm text-center pt-8"
                 style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-tertiary)' }}
               >
-                Select a piece from the library to start playing.
+                {t.library.selectPiece}
               </p>
             </div>
           </div>
@@ -307,7 +310,7 @@ export function MobileLayout(): React.JSX.Element {
                 className="text-xs mb-3"
                 style={{ color: 'var(--color-text-tertiary)' }}
               >
-                Or upload your own .mid file:
+                {t.library.uploadOwn}
               </p>
               <FileUploader />
             </section>

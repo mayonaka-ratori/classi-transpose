@@ -2,6 +2,7 @@ import { useState, useCallback } from 'react';
 
 import { usePlayerStore } from '../../stores/usePlayerStore';
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
 
 function formatTime(seconds: number): string {
   const m = Math.floor(seconds / 60);
@@ -51,6 +52,7 @@ export function LoopControl(): React.JSX.Element {
 
   const displayA = isLoopActive ? loopStart : (pendingA ?? null);
   const displayB = isLoopActive ? loopEnd : null;
+  const { t } = useTranslation();
 
   /* Shared glass pill button base classes */
   const pillBase = [
@@ -80,7 +82,7 @@ export function LoopControl(): React.JSX.Element {
         className="text-xs font-semibold uppercase tracking-widest"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        A-B Loop
+        {t.loop.label}
       </h3>
 
       <div className="flex items-center gap-2 flex-wrap">
@@ -89,7 +91,7 @@ export function LoopControl(): React.JSX.Element {
           type="button"
           onClick={handleA}
           disabled={!hasMidi}
-          aria-label="Set loop start point (A)"
+          aria-label={t.loop.setA}
           aria-pressed={hasA}
           className={[
             pillBase,
@@ -105,7 +107,7 @@ export function LoopControl(): React.JSX.Element {
           type="button"
           onClick={handleB}
           disabled={!hasMidi || (!isLoopActive && pendingA === null)}
-          aria-label="Set loop end point (B)"
+          aria-label={t.loop.setB}
           aria-pressed={isLoopActive}
           className={[
             pillBase,
@@ -139,7 +141,7 @@ export function LoopControl(): React.JSX.Element {
           <button
             type="button"
             onClick={handleClear}
-            aria-label="Clear A-B loop"
+            aria-label={t.loop.clearAriaLabel}
             className={[
               'px-3 py-2 rounded-full text-xs border',
               'bg-white/30 backdrop-blur-md border-white/30',
@@ -149,7 +151,7 @@ export function LoopControl(): React.JSX.Element {
             ].join(' ')}
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Clear
+            {t.loop.clear}
           </button>
         )}
       </div>
@@ -157,12 +159,12 @@ export function LoopControl(): React.JSX.Element {
       {/* Status text */}
       {isLoopActive && (
         <p className="text-xs font-medium" style={{ color: 'var(--color-accent-rose)' }}>
-          Loop active · {formatTime(loopStart)} → {formatTime(loopEnd)}
+          {t.loop.activeStatus(formatTime(loopStart), formatTime(loopEnd))}
         </p>
       )}
       {pendingA !== null && !isLoopActive && (
         <p className="text-xs" style={{ color: 'var(--color-accent-gold)' }}>
-          A set at {formatTime(pendingA)} — press B to complete loop
+          {t.loop.pendingA(formatTime(pendingA))}
         </p>
       )}
     </div>

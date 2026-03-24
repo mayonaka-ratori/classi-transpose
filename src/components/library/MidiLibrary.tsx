@@ -2,6 +2,7 @@ import { useState, useCallback, useMemo } from 'react';
 
 import { MIDI_CATALOG, getComposersByCategory } from '../../data/midi-catalog';
 import type { MidiCategory, MidiPiece, ComposerGroup } from '../../data/midi-catalog';
+import { useTranslation } from '../../i18n';
 import { CategoryFilter } from './CategoryFilter';
 import { ComposerSelector } from './ComposerSelector';
 import { PieceList } from './PieceList';
@@ -9,6 +10,7 @@ import { PieceList } from './PieceList';
 export function MidiLibrary(): React.JSX.Element {
   const [category, setCategory] = useState<MidiCategory | 'all'>('all');
   const [selectedComposerFull, setSelectedComposerFull] = useState<string | null>(null);
+  const { t } = useTranslation();
 
   // Groups visible for the current category
   const visibleGroups: ComposerGroup[] = useMemo(
@@ -47,13 +49,13 @@ export function MidiLibrary(): React.JSX.Element {
           className="text-base font-semibold"
           style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
         >
-          MIDI Library
+          {t.library.title}
         </h2>
         <span
           className="text-xs"
           style={{ fontFamily: 'var(--font-mono)', color: 'var(--color-text-tertiary)' }}
         >
-          {pieces.length} piece{pieces.length !== 1 ? 's' : ''}
+          {t.library.pieces(pieces.length)}
         </span>
       </div>
 
@@ -84,7 +86,7 @@ export function MidiLibrary(): React.JSX.Element {
         className="text-xs text-center pt-1"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        All pieces are public domain. MIDI files sourced from piano-midi.de, midiworld.com, mfiles.co.uk.
+        {t.library.attribution}
       </p>
     </div>
   );

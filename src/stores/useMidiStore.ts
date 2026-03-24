@@ -13,12 +13,12 @@ import { initSequencer } from '../engine/audio/playback-scheduler';
  */
 function assertMidiMagicBytes(buffer: ArrayBuffer): void {
   if (buffer.byteLength < 4) {
-    throw new Error('Not a valid MIDI file (file too small)');
+    throw new Error('invalidMidiSmall');
   }
   const view = new Uint8Array(buffer, 0, 4);
   // "MThd" = 0x4D 0x54 0x68 0x64
   if (view[0] !== 0x4D || view[1] !== 0x54 || view[2] !== 0x68 || view[3] !== 0x64) {
-    throw new Error('Not a valid MIDI file (invalid header)');
+    throw new Error('invalidMidiHeader');
   }
 }
 
@@ -84,7 +84,7 @@ export const useMidiStore = create<MidiStore>()((set) => ({
         loadError: null,
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to load MIDI file';
+      const message = err instanceof Error ? err.message : 'failedToLoad';
       set({ isLoading: false, loadError: message });
     }
   },
@@ -97,10 +97,7 @@ export const useMidiStore = create<MidiStore>()((set) => ({
 
       const response = await fetch(url);
       if (!response.ok) {
-        throw new Error(
-          `MIDI file not found: ${piece.filename}. ` +
-          'Download it from the source listed in docs/MIDI_DOWNLOAD_GUIDE.md and place it in public/presets/.',
-        );
+        throw new Error(`missingFile:${piece.filename}`);
       }
       const buffer = await response.arrayBuffer();
       // Guard against Vite SPA fallback serving index.html instead of a real MIDI file
@@ -126,7 +123,7 @@ export const useMidiStore = create<MidiStore>()((set) => ({
         loadError: null,
       });
     } catch (err) {
-      const message = err instanceof Error ? err.message : 'Failed to load preset';
+      const message = err instanceof Error ? err.message : 'failedToLoadPreset';
       set({ isLoading: false, loadError: message });
     }
   },

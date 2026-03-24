@@ -1,11 +1,13 @@
 import { useCallback } from 'react';
 
 import { useTranspose } from '../../hooks/useTranspose';
+import { useTranslation } from '../../i18n';
 import { MAX_TRANSPOSE_SEMITONES, MIN_TRANSPOSE_SEMITONES } from '../../utils/constants';
 import type { KeyName } from '../../types/music';
 
 export function TransposeControl(): React.JSX.Element {
   const { semitones, currentKey, allKeys, increment, decrement, setByKey, setSemitones } = useTranspose();
+  const { t } = useTranslation();
 
   const handleSliderChange = useCallback((e: React.ChangeEvent<HTMLInputElement>): void => {
     setSemitones(parseInt(e.target.value, 10));
@@ -16,10 +18,11 @@ export function TransposeControl(): React.JSX.Element {
   }, [setByKey]);
 
   const sign = semitones > 0 ? '+' : '';
+  const absVal = Math.abs(semitones);
   const semitoneLabel =
     semitones === 0
-      ? 'no change'
-      : `${sign}${semitones} semitone${Math.abs(semitones) !== 1 ? 's' : ''}`;
+      ? t.transpose.noChange
+      : `${sign}${semitones} ${absVal === 1 ? t.transpose.semitone : t.transpose.semitones}`;
 
   return (
     <div className="flex flex-col gap-4">
@@ -28,7 +31,7 @@ export function TransposeControl(): React.JSX.Element {
         className="text-xs font-semibold uppercase tracking-widest"
         style={{ color: 'var(--color-text-tertiary)' }}
       >
-        Transpose
+        {t.transpose.label}
       </h2>
 
       {/* Large semitone value display */}
@@ -43,7 +46,7 @@ export function TransposeControl(): React.JSX.Element {
           className="text-sm"
           style={{ color: 'var(--color-text-secondary)' }}
         >
-          {semitones === 0 ? 'semitones (no change)' : `semitone${Math.abs(semitones) !== 1 ? 's' : ''}`}
+          {semitones === 0 ? `${t.transpose.semitones} (${t.transpose.noChange})` : (absVal === 1 ? t.transpose.semitone : t.transpose.semitones)}
         </span>
       </div>
 
@@ -65,7 +68,7 @@ export function TransposeControl(): React.JSX.Element {
             className="text-xs font-medium"
             style={{ color: 'var(--color-text-secondary)' }}
           >
-            Target key
+            {t.transpose.targetKey}
           </label>
           <select
             id="key-select"
@@ -96,7 +99,7 @@ export function TransposeControl(): React.JSX.Element {
           type="button"
           onClick={decrement}
           disabled={semitones <= MIN_TRANSPOSE_SEMITONES}
-          aria-label="Transpose down 1 semitone"
+          aria-label={t.transpose.downAriaLabel}
           className={[
             'w-11 h-11 rounded-full shrink-0 flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',
@@ -118,7 +121,7 @@ export function TransposeControl(): React.JSX.Element {
           step={1}
           value={semitones}
           onChange={handleSliderChange}
-          aria-label="Semitone offset"
+          aria-label={t.transpose.sliderAriaLabel}
           aria-valuemin={MIN_TRANSPOSE_SEMITONES}
           aria-valuemax={MAX_TRANSPOSE_SEMITONES}
           aria-valuenow={semitones}
@@ -130,7 +133,7 @@ export function TransposeControl(): React.JSX.Element {
           type="button"
           onClick={increment}
           disabled={semitones >= MAX_TRANSPOSE_SEMITONES}
-          aria-label="Transpose up 1 semitone"
+          aria-label={t.transpose.upAriaLabel}
           className={[
             'w-11 h-11 rounded-full shrink-0 flex items-center justify-center',
             'bg-white/40 backdrop-blur-md border border-white/30',

@@ -2,6 +2,7 @@ import { useCallback } from 'react';
 
 import { MIDI_CATALOG, getComposersByCategory } from '../../data/midi-catalog';
 import type { MidiCategory, ComposerGroup } from '../../data/midi-catalog';
+import { useTranslation } from '../../i18n';
 
 type ComposerSelectorProps = {
   category: MidiCategory | 'all';
@@ -16,6 +17,7 @@ export function ComposerSelector({
 }: ComposerSelectorProps): React.JSX.Element {
   const groups: ComposerGroup[] =
     category === 'all' ? MIDI_CATALOG : getComposersByCategory(category);
+  const { t } = useTranslation();
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -27,7 +29,7 @@ export function ComposerSelector({
   return (
     <div className="relative">
       <select
-        aria-label="Select composer"
+        aria-label={t.library.composerAriaLabel}
         value={selected ?? ''}
         onChange={handleChange}
         className={[
@@ -44,7 +46,7 @@ export function ComposerSelector({
       >
         {!selected && (
           <option value="" disabled>
-            — Select a composer —
+            {t.library.selectComposer}
           </option>
         )}
         {groups.map((group) => (
