@@ -7,7 +7,8 @@ import {
   setPlaybackRate as engineSetPlaybackRate,
   setLoopConfig,
 } from '../engine/audio/playback-scheduler';
-import { resumeAudio } from '../engine/audio/synth-manager';
+import { resumeAudio, isSoundFontLoaded } from '../engine/audio/synth-manager';
+import { useAudioStore } from './useAudioStore';
 import { MIN_TEMPO_SCALE, MAX_TEMPO_SCALE, MAX_BPM } from '../utils/constants';
 
 type PlayerStore = {
@@ -44,6 +45,12 @@ export const usePlayerStore = create<PlayerStore>()((set, get) => ({
   loopEnd: 0,
 
   play: async () => {
+    // Ensure SoundFont is loaded before playing (always-HQ mode)
+    if (!isSoundFontLoaded()) {
+      await useAudioStore.getState().loadSoundFont();
+      // If loading failed, abort playback
+      if (!isSoundFontLoaded()) return;
+    }
     await resumeAudio();
     enginePlay();
     set({ isPlaying: true });

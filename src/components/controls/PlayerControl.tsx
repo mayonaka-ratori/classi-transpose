@@ -2,8 +2,86 @@ import { useCallback } from 'react';
 
 import { usePlayerStore } from '../../stores/usePlayerStore';
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useAudioStore } from '../../stores/useAudioStore';
 import { SeekBar } from './SeekBar';
 import { LoopControl } from './LoopControl';
+
+// ── SF loading progress panel ─────────────────────────────────────────────────
+
+function SfLoadingPanel(): React.JSX.Element {
+  const sfLoadState = useAudioStore((s) => s.sfLoadState);
+  const sfLoadProgress = useAudioStore((s) => s.sfLoadProgress);
+  const sfError = useAudioStore((s) => s.sfError);
+  const clearError = useAudioStore((s) => s.clearError);
+  const loadSoundFont = useAudioStore((s) => s.loadSoundFont);
+
+  if (sfLoadState === 'loaded' || sfLoadState === 'idle') return <></>;
+
+  if (sfLoadState === 'error') {
+    return (
+      <div
+        role="alert"
+        className="flex flex-col items-center gap-2 w-full py-3 px-4 rounded-xl"
+        style={{ background: 'rgba(194,24,91,0.08)', border: '1px solid rgba(194,24,91,0.2)' }}
+      >
+        <p
+          className="text-sm text-center leading-snug"
+          style={{ color: 'var(--color-accent-rose)' }}
+        >
+          音源の読み込みに失敗しました。ネットワーク接続を確認してください。
+        </p>
+        {sfError && (
+          <p className="text-xs text-center opacity-70" style={{ color: 'var(--color-accent-rose)' }}>
+            {sfError}
+          </p>
+        )}
+        <button
+          type="button"
+          onClick={() => { clearError(); void loadSoundFont(); }}
+          className={[
+            'px-4 py-1.5 rounded-full text-xs font-semibold text-white',
+            'transition-all duration-200 hover:scale-105 active:scale-95',
+            'focus-visible:ring-2 focus-visible:ring-[color:var(--color-accent-rose)]/50',
+          ].join(' ')}
+          style={{ background: 'linear-gradient(135deg, #C2185B, #AD1457)' }}
+        >
+          再試行
+        </button>
+      </div>
+    );
+  }
+
+  // sfLoadState === 'loading'
+  return (
+    <div className="flex flex-col items-center gap-2 w-full">
+      <p
+        className="text-sm font-medium"
+        style={{ color: 'var(--color-text-secondary)' }}
+      >
+        音源を読み込んでいます… {sfLoadProgress}%
+      </p>
+      <div
+        role="progressbar"
+        aria-valuenow={sfLoadProgress}
+        aria-valuemin={0}
+        aria-valuemax={100}
+        aria-label="SoundFont download progress"
+        className="w-full h-2 rounded-full overflow-hidden"
+        style={{ backgroundColor: 'rgba(0,0,0,0.08)' }}
+      >
+        <div
+          className="h-full rounded-full transition-all duration-300"
+          style={{
+            width: `${sfLoadProgress}%`,
+            background: 'linear-gradient(90deg, #5C6BC0, #3F51B5)',
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+// ── PlayerControl ─────────────────────────────────────────────────────────────
 
 export function PlayerControl(): React.JSX.Element {
   const isPlaying = usePlayerStore((s) => s.isPlaying);
@@ -11,6 +89,9 @@ export function PlayerControl(): React.JSX.Element {
   const pause = usePlayerStore((s) => s.pause);
   const stop = usePlayerStore((s) => s.stop);
   const hasMidi = useMidiStore((s) => s.parsedMidi !== null);
+  const sfLoadState = useAudioStore((s) => s.sfLoadState);
+
+  const isLoadingSF = sfLoadState === 'loading';
 
   const handlePlayPause = useCallback((): void => {
     if (isPlaying) {
@@ -32,13 +113,16 @@ export function PlayerControl(): React.JSX.Element {
       {/* A-B loop control */}
       <LoopControl />
 
+      {/* SF loading indicator (visible while downloading or on error) */}
+      <SfLoadingPanel />
+
       {/* Transport buttons */}
       <div className="flex items-center justify-center gap-6">
         {/* Stop button (glass) */}
         <button
           type="button"
           onClick={handleStop}
-          disabled={!hasMidi}
+          disabled={!hasMidi || isLoadingSF}
           aria-label="Stop"
           className={[
             'w-10 h-10 rounded-full flex items-center justify-center',
@@ -57,7 +141,7 @@ export function PlayerControl(): React.JSX.Element {
         <button
           type="button"
           onClick={handlePlayPause}
-          disabled={!hasMidi}
+          disabled={!hasMidi || isLoadingSF}
           aria-label={isPlaying ? 'Pause' : 'Play'}
           className={[
             'w-14 h-14 md:w-16 md:h-16 rounded-full flex items-center justify-center',
@@ -73,7 +157,24 @@ export function PlayerControl(): React.JSX.Element {
             boxShadow: '0 4px 16px rgba(194, 24, 91, 0.35)',
           }}
         >
-          <span aria-hidden="true">{isPlaying ? '⏸' : '▶'}</span>
+          <span aria-hidden="true">
+            {isLoadingSF ? (
+              <svg
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                aria-hidden="true"
+                className="animate-spin"
+              >
+                <circle cx="12" cy="12" r="10" strokeOpacity="0.25" />
+                <path d="M12 2a10 10 0 0 1 10 10" />
+              </svg>
+            ) : isPlaying ? '⏸' : '▶'}
+          </span>
         </button>
       </div>
     </div>

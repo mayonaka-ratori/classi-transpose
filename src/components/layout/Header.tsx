@@ -1,5 +1,3 @@
-import { QualityToggle } from '../controls/QualityToggle';
-
 export function Header(): React.JSX.Element {
   return (
     <header
@@ -25,11 +23,6 @@ export function Header(): React.JSX.Element {
         >
           ClassiTranspose
         </h1>
-      </div>
-
-      {/* Right: quality toggle */}
-      <div className="flex items-center py-1.5">
-        <QualityToggle />
       </div>
     </header>
   );

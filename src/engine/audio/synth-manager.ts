@@ -5,13 +5,25 @@ import { computeChannelMutes } from '../midi/track-state';
 import { fetchWithProgress } from './soundfont-loader';
 
 const PROCESSOR_URL = '/spessasynth_processor.min.js';
+
 /**
- * The HQ SoundFont URL. Falls back to the local copy for development.
- * Override in production by setting VITE_HQ_SOUNDFONT_URL in Vercel env vars.
+ * Resolve the HQ SoundFont URL based on the current environment.
+ *
+ * Priority order:
+ *   1. VITE_HQ_SOUNDFONT_URL env var (explicit override — highest priority)
+ *   2. Production build → GitHub Releases CDN (file too large for Vercel deploy)
+ *   3. Development build → local public/soundfonts/ directory
  */
-const HQ_SOUNDFONT_URL: string =
-  (import.meta.env.VITE_HQ_SOUNDFONT_URL as string | undefined) ??
-  '/soundfonts/GeneralUser-GS.sf2';
+function getSoundFontURL(): string {
+  const override = import.meta.env.VITE_HQ_SOUNDFONT_URL as string | undefined;
+  if (override) return override;
+  if (import.meta.env.PROD) {
+    return 'https://github.com/mayonaka-ratori/classi-transpose/releases/download/v1.0.0/GeneralUser-GS.sf2';
+  }
+  return '/soundfonts/GeneralUser-GS.sf2';
+}
+
+const HQ_SOUNDFONT_URL = getSoundFontURL();
 const DRUM_CHANNEL = 9;
 const MIDI_CHANNELS = 16;
 
