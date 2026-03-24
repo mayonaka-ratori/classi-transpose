@@ -6,24 +6,7 @@ import { fetchWithProgress } from './soundfont-loader';
 
 const PROCESSOR_URL = '/spessasynth_processor.min.js';
 
-/**
- * Resolve the HQ SoundFont URL based on the current environment.
- *
- * Priority order:
- *   1. VITE_HQ_SOUNDFONT_URL env var (explicit override — highest priority)
- *   2. Production build → GitHub Releases CDN (file too large for Vercel deploy)
- *   3. Development build → local public/soundfonts/ directory
- */
-function getSoundFontURL(): string {
-  const override = import.meta.env.VITE_HQ_SOUNDFONT_URL as string | undefined;
-  if (override) return override;
-  if (import.meta.env.PROD) {
-    return 'https://github.com/mayonaka-ratori/classi-transpose/releases/download/v1.0.0/GeneralUser-GS.sf2';
-  }
-  return '/soundfonts/GeneralUser-GS.sf2';
-}
-
-const HQ_SOUNDFONT_URL = getSoundFontURL();
+const HQ_SOUNDFONT_URL = '/soundfonts/GeneralUser-GS.sf2';
 const DRUM_CHANNEL = 9;
 const MIDI_CHANNELS = 16;
 

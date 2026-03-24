@@ -8,6 +8,3 @@ dist/
 Thumbs.db
 .claude/settings.local.json
 
-# SoundFont files are large — track with Git LFS or exclude
-public/soundfonts/*.sf2
-public/soundfonts/*.sf3
