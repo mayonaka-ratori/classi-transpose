@@ -17,7 +17,7 @@ export function ComposerSelector({
 }: ComposerSelectorProps): React.JSX.Element {
   const groups: ComposerGroup[] =
     category === 'all' ? MIDI_CATALOG : getComposersByCategory(category);
-  const { t } = useTranslation();
+  const { t, lang } = useTranslation();
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -51,7 +51,7 @@ export function ComposerSelector({
         )}
         {groups.map((group) => (
           <option key={group.composerFull} value={group.composerFull}>
-            {group.composerFull} ({group.pieces.length})
+            {lang === 'ja' && group.composerJa ? group.composerJa : group.composerFull} ({group.pieces.length})
           </option>
         ))}
       </select>

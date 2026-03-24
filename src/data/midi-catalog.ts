@@ -35,6 +35,7 @@ export interface MidiPiece {
 export interface ComposerGroup {
   composer: string;
   composerFull: string;
+  composerJa?: string;
   period: string;
   nationality: string;
   years: string;
@@ -59,6 +60,7 @@ export const CATEGORIES: { id: MidiCategory; label: string; labelJa: string }[] 
 const BACH: ComposerGroup = {
   composer: 'J.S. Bach',
   composerFull: 'Johann Sebastian Bach',
+  composerJa: 'J.S. バッハ',
   period: 'Baroque',
   nationality: 'German',
   years: '1685–1750',
@@ -66,6 +68,7 @@ const BACH: ComposerGroup = {
     {
       id: 'bach-wtc1-prelude-c',
       title: 'Prelude in C major (WTC I)',
+      titleJa: '平均律クラヴィーア曲集 第1巻 前奏曲 ハ長調 BWV 846',
       composer: 'J.S. Bach',
       composerFull: 'Johann Sebastian Bach',
       category: 'baroque',
@@ -82,6 +85,7 @@ const BACH: ComposerGroup = {
     {
       id: 'bach-wtc1-fugue-cm',
       title: 'Fugue in C minor (WTC I)',
+      titleJa: '平均律クラヴィーア曲集 第1巻 フーガ ハ短調 BWV 847',
       composer: 'J.S. Bach',
       composerFull: 'Johann Sebastian Bach',
       category: 'baroque',
@@ -98,6 +102,7 @@ const BACH: ComposerGroup = {
     {
       id: 'bach-wtc1-prelude-d',
       title: 'Prelude in D major (WTC I)',
+      titleJa: '平均律クラヴィーア曲集 第1巻 前奏曲 ニ長調 BWV 850',
       composer: 'J.S. Bach',
       composerFull: 'Johann Sebastian Bach',
       category: 'baroque',
@@ -118,6 +123,7 @@ const BACH: ComposerGroup = {
 const HANDEL: ComposerGroup = {
   composer: 'G.F. Handel',
   composerFull: 'George Frideric Handel',
+  composerJa: 'G.F. ヘンデル',
   period: 'Baroque',
   nationality: 'German-British',
   years: '1685–1759',
@@ -125,6 +131,7 @@ const HANDEL: ComposerGroup = {
     {
       id: 'handel-water-music-hornpipe',
       title: 'Water Music Suite No. 2 — Hornpipe',
+      titleJa: '水上の音楽 第2組曲 ホーンパイプ',
       composer: 'G.F. Handel',
       composerFull: 'George Frideric Handel',
       category: 'orchestral',
@@ -143,6 +150,7 @@ const HANDEL: ComposerGroup = {
 const VIVALDI: ComposerGroup = {
   composer: 'A. Vivaldi',
   composerFull: 'Antonio Vivaldi',
+  composerJa: 'A. ヴィヴァルディ',
   period: 'Baroque',
   nationality: 'Italian',
   years: '1678–1741',
@@ -150,6 +158,7 @@ const VIVALDI: ComposerGroup = {
     {
       id: 'vivaldi-spring',
       title: 'The Four Seasons — Spring, 1st Mov.',
+      titleJa: '四季 第1番「春」第1楽章',
       composer: 'A. Vivaldi',
       composerFull: 'Antonio Vivaldi',
       category: 'orchestral',
@@ -173,6 +182,7 @@ const VIVALDI: ComposerGroup = {
 const MOZART: ComposerGroup = {
   composer: 'W.A. Mozart',
   composerFull: 'Wolfgang Amadeus Mozart',
+  composerJa: 'W.A. モーツァルト',
   period: 'Classical',
   nationality: 'Austrian',
   years: '1756–1791',
@@ -180,6 +190,7 @@ const MOZART: ComposerGroup = {
     {
       id: 'mozart-sonata-k545-1',
       title: 'Piano Sonata No. 16, 1st Mov.',
+      titleJa: 'ピアノソナタ第16番 ハ長調 K.545 第1楽章',
       composer: 'W.A. Mozart',
       composerFull: 'Wolfgang Amadeus Mozart',
       category: 'classical',
@@ -196,6 +207,7 @@ const MOZART: ComposerGroup = {
     {
       id: 'mozart-alla-turca',
       title: 'Rondo alla Turca',
+      titleJa: 'ピアノソナタ第11番 第3楽章「トルコ行進曲」',
       composer: 'W.A. Mozart',
       composerFull: 'Wolfgang Amadeus Mozart',
       category: 'classical',
@@ -215,6 +227,7 @@ const MOZART: ComposerGroup = {
 const BEETHOVEN: ComposerGroup = {
   composer: 'L.v. Beethoven',
   composerFull: 'Ludwig van Beethoven',
+  composerJa: 'L.v. ベートーヴェン',
   period: 'Classical',
   nationality: 'German',
   years: '1770–1827',
@@ -222,6 +235,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-fur-elise',
       title: 'Für Elise',
+      titleJa: 'エリーゼのために',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -238,6 +252,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-moonlight-1',
       title: 'Moonlight Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第14番「月光」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -254,6 +269,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-pathetique-2',
       title: 'Pathétique Sonata, 2nd Mov.',
+      titleJa: 'ピアノソナタ第8番「悲愴」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -270,6 +286,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-moonlight-2',
       title: 'Moonlight Sonata, 2nd Mov.',
+      titleJa: 'ピアノソナタ第14番「月光」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -286,6 +303,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-moonlight-3',
       title: 'Moonlight Sonata, 3rd Mov.',
+      titleJa: 'ピアノソナタ第14番「月光」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -302,6 +320,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-pathetique-1',
       title: 'Pathétique Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第8番「悲愴」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -318,6 +337,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-pathetique-3',
       title: 'Pathétique Sonata, 3rd Mov.',
+      titleJa: 'ピアノソナタ第8番「悲愴」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -334,6 +354,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-waldstein-1',
       title: 'Waldstein Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第21番「ワルトシュタイン」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -350,6 +371,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-waldstein-2',
       title: 'Waldstein Sonata, 2nd Mov. (Introduzione)',
+      titleJa: 'ピアノソナタ第21番「ワルトシュタイン」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -366,6 +388,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-waldstein-3',
       title: 'Waldstein Sonata, 3rd Mov. (Rondo)',
+      titleJa: 'ピアノソナタ第21番「ワルトシュタイン」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -382,6 +405,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-appassionata-1',
       title: 'Appassionata Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第23番「熱情」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -398,6 +422,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-appassionata-2',
       title: 'Appassionata Sonata, 2nd Mov.',
+      titleJa: 'ピアノソナタ第23番「熱情」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -414,6 +439,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-appassionata-3',
       title: 'Appassionata Sonata, 3rd Mov.',
+      titleJa: 'ピアノソナタ第23番「熱情」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -430,6 +456,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-les-adieux-1',
       title: 'Les Adieux Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第26番「告別」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -446,6 +473,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-les-adieux-2',
       title: 'Les Adieux Sonata, 2nd Mov. (Abwesenheit)',
+      titleJa: 'ピアノソナタ第26番「告別」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -462,6 +490,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-les-adieux-3',
       title: 'Les Adieux Sonata, 3rd Mov. (Das Wiedersehen)',
+      titleJa: 'ピアノソナタ第26番「告別」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -478,6 +507,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op10-1',
       title: 'Piano Sonata Op. 10 No. 1, 1st Mov.',
+      titleJa: 'ピアノソナタ第5番 Op.10-1 第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -494,6 +524,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op10-2',
       title: 'Piano Sonata Op. 10 No. 1, 2nd Mov.',
+      titleJa: 'ピアノソナタ第5番 Op.10-1 第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -510,6 +541,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op10-3',
       title: 'Piano Sonata Op. 10 No. 1, 3rd Mov.',
+      titleJa: 'ピアノソナタ第5番 Op.10-1 第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -526,6 +558,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op22-1',
       title: 'Piano Sonata Op. 22, 1st Mov.',
+      titleJa: 'ピアノソナタ第11番 Op.22 第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -542,6 +575,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op22-2',
       title: 'Piano Sonata Op. 22, 2nd Mov.',
+      titleJa: 'ピアノソナタ第11番 Op.22 第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -558,6 +592,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op22-3',
       title: 'Piano Sonata Op. 22, 3rd Mov. (Menuetto)',
+      titleJa: 'ピアノソナタ第11番 Op.22 第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -574,6 +609,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op22-4',
       title: 'Piano Sonata Op. 22, 4th Mov. (Rondo)',
+      titleJa: 'ピアノソナタ第11番 Op.22 第4楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -590,6 +626,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op90-1',
       title: 'Piano Sonata Op. 90, 1st Mov.',
+      titleJa: 'ピアノソナタ第27番 Op.90 第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -606,6 +643,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-sonata-op90-2',
       title: 'Piano Sonata Op. 90, 2nd Mov.',
+      titleJa: 'ピアノソナタ第27番 Op.90 第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -622,6 +660,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-hammerklavier-1',
       title: 'Hammerklavier Sonata, 1st Mov.',
+      titleJa: 'ピアノソナタ第29番「ハンマークラヴィーア」第1楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -638,6 +677,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-hammerklavier-2',
       title: 'Hammerklavier Sonata, 2nd Mov. (Scherzo)',
+      titleJa: 'ピアノソナタ第29番「ハンマークラヴィーア」第2楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -654,6 +694,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-hammerklavier-3',
       title: 'Hammerklavier Sonata, 3rd Mov. (Adagio)',
+      titleJa: 'ピアノソナタ第29番「ハンマークラヴィーア」第3楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -670,6 +711,7 @@ const BEETHOVEN: ComposerGroup = {
     {
       id: 'beethoven-hammerklavier-4',
       title: 'Hammerklavier Sonata, 4th Mov. (Fugue)',
+      titleJa: 'ピアノソナタ第29番「ハンマークラヴィーア」第4楽章',
       composer: 'L.v. Beethoven',
       composerFull: 'Ludwig van Beethoven',
       category: 'classical',
@@ -694,6 +736,7 @@ const BEETHOVEN: ComposerGroup = {
 const CHOPIN: ComposerGroup = {
   composer: 'F. Chopin',
   composerFull: 'Frédéric Chopin',
+  composerJa: 'F. ショパン',
   period: 'Romantic',
   nationality: 'Polish',
   years: '1810–1849',
@@ -701,6 +744,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-4',
       title: 'Prelude in E minor',
+      titleJa: '前奏曲集 Op.28 No.4 ホ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -717,6 +761,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-7',
       title: 'Prelude in A major',
+      titleJa: '前奏曲集 Op.28 No.7 イ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -733,6 +778,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-fantaisie-impromptu',
       title: 'Fantaisie-Impromptu',
+      titleJa: '幻想即興曲 嬰ハ短調 Op.66',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -749,6 +795,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-polonaise-op53',
       title: 'Polonaise "Heroic"',
+      titleJa: 'ポロネーズ第6番「英雄」変イ長調 Op.53',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -765,6 +812,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-ballade-1',
       title: 'Ballade No. 1 in G minor',
+      titleJa: 'バラード第1番 ト短調 Op.23',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -781,6 +829,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op10-1',
       title: 'Étude Op. 10 No. 1',
+      titleJa: '練習曲 Op.10 No.1 ハ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -797,6 +846,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op10-5',
       title: 'Étude Op. 10 No. 5 "Black Keys"',
+      titleJa: '練習曲 Op.10 No.5「黒鍵」変ト長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -813,6 +863,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op10-12',
       title: 'Étude Op. 10 No. 12 "Revolutionary"',
+      titleJa: '練習曲 Op.10 No.12「革命」ハ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -829,6 +880,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-1',
       title: 'Étude Op. 25 No. 1 "Aeolian Harp"',
+      titleJa: '練習曲 Op.25 No.1「エオリアン・ハープ」変イ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -845,6 +897,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-2',
       title: 'Étude Op. 25 No. 2',
+      titleJa: '練習曲 Op.25 No.2 ヘ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -861,6 +914,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-3',
       title: 'Étude Op. 25 No. 3',
+      titleJa: '練習曲 Op.25 No.3 ヘ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -877,6 +931,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-4',
       title: 'Étude Op. 25 No. 4',
+      titleJa: '練習曲 Op.25 No.4 イ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -893,6 +948,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-11',
       title: 'Étude Op. 25 No. 11 "Winter Wind"',
+      titleJa: '練習曲 Op.25 No.11「木枯らし」イ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -909,6 +965,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-etude-op25-12',
       title: 'Étude Op. 25 No. 12 "Ocean"',
+      titleJa: '練習曲 Op.25 No.12「大洋」ハ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -925,6 +982,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-grand-valse-op18',
       title: 'Grande Valse Brillante',
+      titleJa: '華麗なる大円舞曲 変ホ長調 Op.18',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -941,6 +999,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-mazurka-op7-1',
       title: 'Mazurka Op. 7 No. 1',
+      titleJa: 'マズルカ Op.7 No.1 変ロ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -957,6 +1016,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-mazurka-op7-2',
       title: 'Mazurka Op. 7 No. 2',
+      titleJa: 'マズルカ Op.7 No.2 イ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -973,6 +1033,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-mazurka-op33-2',
       title: 'Mazurka Op. 33 No. 2',
+      titleJa: 'マズルカ Op.33 No.2 ニ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -989,6 +1050,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-mazurka-op33-4',
       title: 'Mazurka Op. 33 No. 4',
+      titleJa: 'マズルカ Op.33 No.4 ロ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1005,6 +1067,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-nocturne-op27-1',
       title: 'Nocturne in C♯ minor',
+      titleJa: '夜想曲第13番 嬰ハ短調 Op.27-1',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1021,6 +1084,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-nocturne-op27-2',
       title: 'Nocturne in D♭ major',
+      titleJa: '夜想曲第14番 変ニ長調 Op.27-2',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1037,6 +1101,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-1',
       title: 'Prelude in C major',
+      titleJa: '前奏曲集 Op.28 No.1 ハ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1053,6 +1118,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-2',
       title: 'Prelude in A minor',
+      titleJa: '前奏曲集 Op.28 No.2 イ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1069,6 +1135,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-3',
       title: 'Prelude in G major',
+      titleJa: '前奏曲集 Op.28 No.3 ト長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1085,6 +1152,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-5',
       title: 'Prelude in D major',
+      titleJa: '前奏曲集 Op.28 No.5 ニ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1101,6 +1169,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-6',
       title: 'Prelude in B minor',
+      titleJa: '前奏曲集 Op.28 No.6 ロ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1117,6 +1186,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-8',
       title: 'Prelude in F♯ minor',
+      titleJa: '前奏曲集 Op.28 No.8 嬰ヘ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1133,6 +1203,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-9',
       title: 'Prelude in E major',
+      titleJa: '前奏曲集 Op.28 No.9 ホ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1149,6 +1220,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-10',
       title: 'Prelude in C♯ minor',
+      titleJa: '前奏曲集 Op.28 No.10 嬰ハ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1165,6 +1237,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-11',
       title: 'Prelude in B major',
+      titleJa: '前奏曲集 Op.28 No.11 ロ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1181,6 +1254,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-12',
       title: 'Prelude in G♯ minor',
+      titleJa: '前奏曲集 Op.28 No.12 嬰ト短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1197,6 +1271,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-13',
       title: 'Prelude in F♯ major',
+      titleJa: '前奏曲集 Op.28 No.13 嬰ヘ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1213,6 +1288,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-14',
       title: 'Prelude in E♭ minor',
+      titleJa: '前奏曲集 Op.28 No.14 変ホ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1229,6 +1305,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-15',
       title: 'Prelude in D♭ major "Raindrop"',
+      titleJa: '前奏曲集 Op.28 No.15「雨だれ」変ニ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1245,6 +1322,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-16',
       title: 'Prelude in B♭ minor',
+      titleJa: '前奏曲集 Op.28 No.16 変ロ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1261,6 +1339,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-17',
       title: 'Prelude in A♭ major',
+      titleJa: '前奏曲集 Op.28 No.17 変イ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1277,6 +1356,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-18',
       title: 'Prelude in F minor',
+      titleJa: '前奏曲集 Op.28 No.18 ヘ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1293,6 +1373,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-19',
       title: 'Prelude in E♭ major',
+      titleJa: '前奏曲集 Op.28 No.19 変ホ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1309,6 +1390,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-20',
       title: 'Prelude in C minor',
+      titleJa: '前奏曲集 Op.28 No.20 ハ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1325,6 +1407,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-21',
       title: 'Prelude in B♭ major',
+      titleJa: '前奏曲集 Op.28 No.21 変ロ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1341,6 +1424,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-22',
       title: 'Prelude in G minor',
+      titleJa: '前奏曲集 Op.28 No.22 ト短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1357,6 +1441,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-23',
       title: 'Prelude in F major',
+      titleJa: '前奏曲集 Op.28 No.23 ヘ長調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1373,6 +1458,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-prelude-op28-24',
       title: 'Prelude in D minor',
+      titleJa: '前奏曲集 Op.28 No.24 ニ短調',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1389,6 +1475,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-scherzo-op31',
       title: 'Scherzo No. 2',
+      titleJa: 'スケルツォ第2番 変ロ短調 Op.31',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1405,6 +1492,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-sonata2-1',
       title: 'Piano Sonata No. 2, 1st Mov.',
+      titleJa: 'ピアノソナタ第2番「葬送」第1楽章',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1421,6 +1509,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-sonata2-2',
       title: 'Piano Sonata No. 2, 2nd Mov. (Scherzo)',
+      titleJa: 'ピアノソナタ第2番「葬送」第2楽章',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1437,6 +1526,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-sonata2-3',
       title: 'Piano Sonata No. 2, 3rd Mov. (Funeral March)',
+      titleJa: 'ピアノソナタ第2番「葬送」第3楽章「葬送行進曲」',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1453,6 +1543,7 @@ const CHOPIN: ComposerGroup = {
     {
       id: 'chopin-sonata2-4',
       title: 'Piano Sonata No. 2, 4th Mov. (Finale)',
+      titleJa: 'ピアノソナタ第2番「葬送」第4楽章',
       composer: 'F. Chopin',
       composerFull: 'Frédéric Chopin',
       category: 'romantic',
@@ -1473,6 +1564,7 @@ const CHOPIN: ComposerGroup = {
 const SCHUBERT: ComposerGroup = {
   composer: 'F. Schubert',
   composerFull: 'Franz Schubert',
+  composerJa: 'F. シューベルト',
   period: 'Romantic',
   nationality: 'Austrian',
   years: '1797–1828',
@@ -1480,6 +1572,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-ave-maria',
       title: 'Ave Maria',
+      titleJa: 'アヴェ・マリア D.839',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1496,6 +1589,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-op90-4',
       title: 'Impromptu in A♭ major',
+      titleJa: '即興曲 D.899 No.4 変イ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1512,6 +1606,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d899-1',
       title: 'Impromptu in C minor, Op. 90 No. 1',
+      titleJa: '即興曲 D.899 No.1 ハ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1528,6 +1623,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d899-2',
       title: 'Impromptu in E♭ major, Op. 90 No. 2',
+      titleJa: '即興曲 D.899 No.2 変ホ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1544,6 +1640,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d899-3',
       title: 'Impromptu in G♭ major, Op. 90 No. 3',
+      titleJa: '即興曲 D.899 No.3 変ト長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1560,6 +1657,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d935-1',
       title: 'Impromptu in F minor, Op. 142 No. 1',
+      titleJa: '即興曲 D.935 No.1 ヘ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1576,6 +1674,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d935-2',
       title: 'Impromptu in A♭ major, Op. 142 No. 2',
+      titleJa: '即興曲 D.935 No.2 変イ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1592,6 +1691,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d935-3',
       title: 'Impromptu in B♭ major, Op. 142 No. 3',
+      titleJa: '即興曲 D.935 No.3 変ロ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1608,6 +1708,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-impromptu-d935-4',
       title: 'Impromptu in F minor, Op. 142 No. 4',
+      titleJa: '即興曲 D.935 No.4 ヘ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1624,6 +1725,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-1',
       title: 'Moment Musical No. 1 in C major',
+      titleJa: '楽興の時 第1番 ハ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1640,6 +1742,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-2',
       title: 'Moment Musical No. 2 in A♭ major',
+      titleJa: '楽興の時 第2番 変イ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1656,6 +1759,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-3',
       title: 'Moment Musical No. 3 in F minor',
+      titleJa: '楽興の時 第3番 ヘ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1672,6 +1776,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-4',
       title: 'Moment Musical No. 4 in C♯ minor',
+      titleJa: '楽興の時 第4番 嬰ハ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1688,6 +1793,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-5',
       title: 'Moment Musical No. 5 in F minor',
+      titleJa: '楽興の時 第5番 ヘ短調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1704,6 +1810,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-moments-musicaux-6',
       title: 'Moment Musical No. 6 in A♭ major',
+      titleJa: '楽興の時 第6番 変イ長調',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1720,6 +1827,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d784-1',
       title: 'Piano Sonata D. 784, 1st Mov.',
+      titleJa: 'ピアノソナタ D.784 イ短調 第1楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1736,6 +1844,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d784-2',
       title: 'Piano Sonata D. 784, 2nd Mov.',
+      titleJa: 'ピアノソナタ D.784 イ短調 第2楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1752,6 +1861,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d784-3',
       title: 'Piano Sonata D. 784, 3rd Mov.',
+      titleJa: 'ピアノソナタ D.784 イ短調 第3楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1768,6 +1878,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d850-1',
       title: 'Piano Sonata D. 850, 1st Mov.',
+      titleJa: 'ピアノソナタ D.850 ニ長調 第1楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1784,6 +1895,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d850-2',
       title: 'Piano Sonata D. 850, 2nd Mov.',
+      titleJa: 'ピアノソナタ D.850 ニ長調 第2楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1800,6 +1912,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d850-3',
       title: 'Piano Sonata D. 850, 3rd Mov. (Scherzo)',
+      titleJa: 'ピアノソナタ D.850 ニ長調 第3楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1816,6 +1929,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d850-4',
       title: 'Piano Sonata D. 850, 4th Mov. (Rondo)',
+      titleJa: 'ピアノソナタ D.850 ニ長調 第4楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1832,6 +1946,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d960-1',
       title: 'Piano Sonata D. 960, 1st Mov.',
+      titleJa: 'ピアノソナタ D.960 変ロ長調 第1楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1848,6 +1963,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d960-2',
       title: 'Piano Sonata D. 960, 2nd Mov.',
+      titleJa: 'ピアノソナタ D.960 変ロ長調 第2楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1864,6 +1980,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d960-3',
       title: 'Piano Sonata D. 960, 3rd Mov. (Scherzo)',
+      titleJa: 'ピアノソナタ D.960 変ロ長調 第3楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1880,6 +1997,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-sonata-d960-4',
       title: 'Piano Sonata D. 960, 4th Mov.',
+      titleJa: 'ピアノソナタ D.960 変ロ長調 第4楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1896,6 +2014,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-wanderer-1',
       title: 'Wanderer Fantasy, 1st Mov.',
+      titleJa: 'さすらい人幻想曲 D.760 第1楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1912,6 +2031,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-wanderer-2',
       title: 'Wanderer Fantasy, 2nd Mov. (Adagio)',
+      titleJa: 'さすらい人幻想曲 D.760 第2楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1928,6 +2048,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-wanderer-3',
       title: 'Wanderer Fantasy, 3rd Mov. (Presto)',
+      titleJa: 'さすらい人幻想曲 D.760 第3楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1944,6 +2065,7 @@ const SCHUBERT: ComposerGroup = {
     {
       id: 'schubert-wanderer-4',
       title: 'Wanderer Fantasy, 4th Mov. (Allegro)',
+      titleJa: 'さすらい人幻想曲 D.760 第4楽章',
       composer: 'F. Schubert',
       composerFull: 'Franz Schubert',
       category: 'romantic',
@@ -1964,6 +2086,7 @@ const SCHUBERT: ComposerGroup = {
 const SCHUMANN: ComposerGroup = {
   composer: 'R. Schumann',
   composerFull: 'Robert Schumann',
+  composerJa: 'R. シューマン',
   period: 'Romantic',
   nationality: 'German',
   years: '1810–1856',
@@ -1974,6 +2097,7 @@ const SCHUMANN: ComposerGroup = {
 const LISZT: ComposerGroup = {
   composer: 'F. Liszt',
   composerFull: 'Franz Liszt',
+  composerJa: 'F. リスト',
   period: 'Romantic',
   nationality: 'Hungarian',
   years: '1811–1886',
@@ -1981,6 +2105,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-liebestraum-3',
       title: 'Liebestraum No. 3',
+      titleJa: '愛の夢 第3番 変イ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -1996,6 +2121,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-hungarian-rhapsody-2',
       title: 'Hungarian Rhapsody No. 2',
+      titleJa: 'ハンガリー狂詩曲 第2番 嬰ハ短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2011,6 +2137,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-la-campanella',
       title: 'La Campanella',
+      titleJa: 'ラ・カンパネッラ',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2026,6 +2153,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-paganini-1',
       title: 'Étude d\'après Paganini No. 1',
+      titleJa: 'パガニーニ大練習曲 第1番 ト短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2041,6 +2169,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-paganini-2',
       title: 'Étude d\'après Paganini No. 2',
+      titleJa: 'パガニーニ大練習曲 第2番 変ホ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2056,6 +2185,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-paganini-4',
       title: 'Étude d\'après Paganini No. 4',
+      titleJa: 'パガニーニ大練習曲 第4番 ホ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2071,6 +2201,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-paganini-5',
       title: 'Étude d\'après Paganini No. 5 "La Chasse"',
+      titleJa: 'パガニーニ大練習曲 第5番「狩り」ホ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2086,6 +2217,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-paganini-6',
       title: 'Étude d\'après Paganini No. 6 "Theme and Variations"',
+      titleJa: 'パガニーニ大練習曲 第6番「主題と変奏」イ短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2101,6 +2233,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-trans-04',
       title: 'Transcendental Étude No. 4 "Mazeppa"',
+      titleJa: '超絶技巧練習曲 第4番「マゼッパ」ニ短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2116,6 +2249,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-trans-05',
       title: 'Transcendental Étude No. 5 "Feux follets"',
+      titleJa: '超絶技巧練習曲 第5番「鬼火」変ロ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2131,6 +2265,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-etude-trans-08',
       title: 'Transcendental Étude No. 8 "Wilde Jagd"',
+      titleJa: '超絶技巧練習曲 第8番「荒野の狩り」ハ短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2146,6 +2281,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-hungarian-rhapsody-9',
       title: 'Hungarian Rhapsody No. 9 "Carnival in Pest"',
+      titleJa: 'ハンガリー狂詩曲 第9番「ペストの謝肉祭」',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2161,6 +2297,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-hungarian-rhapsody-10',
       title: 'Hungarian Rhapsody No. 10',
+      titleJa: 'ハンガリー狂詩曲 第10番 ホ長調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2176,6 +2313,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-hungarian-rhapsody-12',
       title: 'Hungarian Rhapsody No. 12',
+      titleJa: 'ハンガリー狂詩曲 第12番 嬰ハ短調',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2191,6 +2329,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-hungarian-rhapsody-15',
       title: 'Hungarian Rhapsody No. 15 "Rákóczi March"',
+      titleJa: 'ハンガリー狂詩曲 第15番「ラーコーツィ行進曲」',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2206,6 +2345,7 @@ const LISZT: ComposerGroup = {
     {
       id: 'liszt-don-juan',
       title: 'Réminiscences de Don Juan',
+      titleJa: 'ドン・ジョヴァンニの回想',
       composer: 'F. Liszt',
       composerFull: 'Franz Liszt',
       category: 'romantic',
@@ -2225,6 +2365,7 @@ const LISZT: ComposerGroup = {
 const TCHAIKOVSKY: ComposerGroup = {
   composer: 'P.I. Tchaikovsky',
   composerFull: 'Pyotr Ilyich Tchaikovsky',
+  composerJa: 'P.I. チャイコフスキー',
   period: 'Romantic',
   nationality: 'Russian',
   years: '1840–1893',
@@ -2232,6 +2373,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-01',
       title: 'The Seasons: January "By the Fireside"',
+      titleJa: '四季 Op.37b 第1番「炉端にて」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2248,6 +2390,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-02',
       title: 'The Seasons: February "Carnival"',
+      titleJa: '四季 Op.37b 第2番「謝肉祭」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2264,6 +2407,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-03',
       title: 'The Seasons: March "Song of the Lark"',
+      titleJa: '四季 Op.37b 第3番「ひばりの歌」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2280,6 +2424,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-04',
       title: 'The Seasons: April "Snowdrop"',
+      titleJa: '四季 Op.37b 第4番「待雪草」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2296,6 +2441,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-05',
       title: 'The Seasons: May "White Nights"',
+      titleJa: '四季 Op.37b 第5番「白夜」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2312,6 +2458,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-06',
       title: 'The Seasons: June "Barcarolle"',
+      titleJa: '四季 Op.37b 第6番「舟歌」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2328,6 +2475,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-07',
       title: 'The Seasons: July "Song of the Reaper"',
+      titleJa: '四季 Op.37b 第7番「刈り入れ人の歌」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2344,6 +2492,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-08',
       title: 'The Seasons: August "Harvest"',
+      titleJa: '四季 Op.37b 第8番「収穫」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2360,6 +2509,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-09',
       title: 'The Seasons: September "The Hunt"',
+      titleJa: '四季 Op.37b 第9番「狩り」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2376,6 +2526,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-10',
       title: 'The Seasons: October "Autumn Song"',
+      titleJa: '四季 Op.37b 第10番「秋の歌」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2392,6 +2543,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-11',
       title: 'The Seasons: November "Troika"',
+      titleJa: '四季 Op.37b 第11番「トロイカ」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2408,6 +2560,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-seasons-12',
       title: 'The Seasons: December "Christmas"',
+      titleJa: '四季 Op.37b 第12番「クリスマス」',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'romantic',
@@ -2424,6 +2577,7 @@ const TCHAIKOVSKY: ComposerGroup = {
     {
       id: 'tchaikovsky-1812-overture',
       title: '1812 Overture',
+      titleJa: '大序曲「1812年」Op.49',
       composer: 'P.I. Tchaikovsky',
       composerFull: 'Pyotr Ilyich Tchaikovsky',
       category: 'orchestral',
@@ -2443,6 +2597,7 @@ const TCHAIKOVSKY: ComposerGroup = {
 const BRAHMS: ComposerGroup = {
   composer: 'J. Brahms',
   composerFull: 'Johannes Brahms',
+  composerJa: 'J. ブラームス',
   period: 'Romantic',
   nationality: 'German',
   years: '1833–1897',
@@ -2450,6 +2605,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-intermezzo-op117-1',
       title: 'Intermezzo in E♭ major, Op. 117 No. 1',
+      titleJa: '間奏曲 変ホ長調 Op.117 No.1',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2466,6 +2622,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-intermezzo-op117-2',
       title: 'Intermezzo in B♭ minor, Op. 117 No. 2',
+      titleJa: '間奏曲 変ロ短調 Op.117 No.2',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2482,6 +2639,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-sonata-op1-1',
       title: 'Piano Sonata Op. 1, 1st Mov.',
+      titleJa: 'ピアノソナタ第1番 Op.1 第1楽章',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2498,6 +2656,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-sonata-op1-2',
       title: 'Piano Sonata Op. 1, 2nd Mov.',
+      titleJa: 'ピアノソナタ第1番 Op.1 第2楽章',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2514,6 +2673,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-sonata-op1-3',
       title: 'Piano Sonata Op. 1, 3rd Mov. (Scherzo)',
+      titleJa: 'ピアノソナタ第1番 Op.1 第3楽章',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2530,6 +2690,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-sonata-op1-4',
       title: 'Piano Sonata Op. 1, 4th Mov. (Finale)',
+      titleJa: 'ピアノソナタ第1番 Op.1 第4楽章',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2546,6 +2707,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-op116-2',
       title: 'Intermezzo Op. 116 No. 2',
+      titleJa: '間奏曲 イ短調 Op.116 No.2',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2562,6 +2724,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-op116-5',
       title: 'Intermezzo Op. 116 No. 5',
+      titleJa: '間奏曲 ホ短調 Op.116 No.5',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2578,6 +2741,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-op116-6',
       title: 'Andantino Op. 116 No. 6',
+      titleJa: 'アンダンティーノ ホ長調 Op.116 No.6',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2594,6 +2758,7 @@ const BRAHMS: ComposerGroup = {
     {
       id: 'brahms-rhapsody-op119-4',
       title: 'Rhapsody Op. 119 No. 4',
+      titleJa: 'ラプソディ 変ホ長調 Op.119 No.4',
       composer: 'J. Brahms',
       composerFull: 'Johannes Brahms',
       category: 'romantic',
@@ -2614,6 +2779,7 @@ const BRAHMS: ComposerGroup = {
 const GRIEG: ComposerGroup = {
   composer: 'E. Grieg',
   composerFull: 'Edvard Grieg',
+  composerJa: 'E. グリーグ',
   period: 'Romantic',
   nationality: 'Norwegian',
   years: '1843–1907',
@@ -2621,6 +2787,7 @@ const GRIEG: ComposerGroup = {
     {
       id: 'grieg-morning-mood',
       title: 'Morning Mood (Peer Gynt)',
+      titleJa: 'ペール・ギュント 第1組曲「朝の気分」',
       composer: 'E. Grieg',
       composerFull: 'Edvard Grieg',
       category: 'orchestral',
@@ -2637,6 +2804,7 @@ const GRIEG: ComposerGroup = {
     {
       id: 'grieg-mountain-king',
       title: 'In the Hall of the Mountain King',
+      titleJa: 'ペール・ギュント 第1組曲「山の魔王の宮殿にて」',
       composer: 'E. Grieg',
       composerFull: 'Edvard Grieg',
       category: 'orchestral',
@@ -2656,6 +2824,7 @@ const GRIEG: ComposerGroup = {
 const DVORAK: ComposerGroup = {
   composer: 'A. Dvořák',
   composerFull: 'Antonín Dvořák',
+  composerJa: 'A. ドヴォルザーク',
   period: 'Romantic',
   nationality: 'Czech',
   years: '1841–1904',
@@ -2663,6 +2832,7 @@ const DVORAK: ComposerGroup = {
     {
       id: 'dvorak-new-world-4th',
       title: 'Symphony No. 9 "New World" — 4th Mov.',
+      titleJa: '交響曲第9番「新世界より」第4楽章',
       composer: 'A. Dvořák',
       composerFull: 'Antonín Dvořák',
       category: 'orchestral',
@@ -2682,6 +2852,7 @@ const DVORAK: ComposerGroup = {
 const SATIE: ComposerGroup = {
   composer: 'E. Satie',
   composerFull: 'Erik Satie',
+  composerJa: 'E. サティ',
   period: 'Romantic',
   nationality: 'French',
   years: '1866–1925',
@@ -2689,6 +2860,7 @@ const SATIE: ComposerGroup = {
     {
       id: 'satie-gymnopedie-1',
       title: 'Gymnopédie No. 1',
+      titleJa: 'ジムノペディ 第1番',
       composer: 'E. Satie',
       composerFull: 'Erik Satie',
       category: 'romantic',
@@ -2704,6 +2876,7 @@ const SATIE: ComposerGroup = {
     {
       id: 'satie-gymnopedie-2',
       title: 'Gymnopédie No. 2',
+      titleJa: 'ジムノペディ 第2番',
       composer: 'E. Satie',
       composerFull: 'Erik Satie',
       category: 'romantic',
@@ -2719,6 +2892,7 @@ const SATIE: ComposerGroup = {
     {
       id: 'satie-gnossienne-1',
       title: 'Gnossienne No. 1',
+      titleJa: 'グノシエンヌ 第1番',
       composer: 'E. Satie',
       composerFull: 'Erik Satie',
       category: 'romantic',
@@ -2737,6 +2911,7 @@ const SATIE: ComposerGroup = {
 const RIMSKY_KORSAKOV: ComposerGroup = {
   composer: 'N. Rimsky-Korsakov',
   composerFull: 'Nikolai Rimsky-Korsakov',
+  composerJa: 'N. リムスキー＝コルサコフ',
   period: 'Romantic',
   nationality: 'Russian',
   years: '1844–1908',
@@ -2744,6 +2919,7 @@ const RIMSKY_KORSAKOV: ComposerGroup = {
     {
       id: 'rimsky-korsakov-bumblebee',
       title: 'Flight of the Bumblebee',
+      titleJa: '熊蜂の飛行',
       composer: 'N. Rimsky-Korsakov',
       composerFull: 'Nikolai Rimsky-Korsakov',
       category: 'orchestral',
@@ -2762,6 +2938,7 @@ const RIMSKY_KORSAKOV: ComposerGroup = {
 const RACHMANINOFF: ComposerGroup = {
   composer: 'S. Rachmaninoff',
   composerFull: 'Sergei Rachmaninoff',
+  composerJa: 'S. ラフマニノフ',
   period: 'Romantic',
   nationality: 'Russian',
   years: '1873–1943',
@@ -2769,6 +2946,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-csm',
       title: 'Prelude in C♯ minor',
+      titleJa: '前奏曲 嬰ハ短調「鐘」Op.3-2',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2785,6 +2963,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-gm',
       title: 'Prelude in G minor',
+      titleJa: '前奏曲 ト短調 Op.23-5',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2801,6 +2980,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-op23-2',
       title: 'Prelude in B♭ major',
+      titleJa: '前奏曲 変ロ長調 Op.23-2',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2817,6 +2997,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-op23-3',
       title: 'Prelude in D minor',
+      titleJa: '前奏曲 ニ短調 Op.23-3',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2833,6 +3014,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-op23-7',
       title: 'Prelude in C minor',
+      titleJa: '前奏曲 ハ短調 Op.23-7',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2849,6 +3031,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-op32-1',
       title: 'Prelude in C major',
+      titleJa: '前奏曲 ハ長調 Op.32-1',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2865,6 +3048,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-prelude-op32-13',
       title: 'Prelude in D♭ major',
+      titleJa: '前奏曲 変ニ長調 Op.32-13',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2881,6 +3065,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-etude-op33-5',
       title: 'Étude-Tableau in D minor',
+      titleJa: '絵画的練習曲 ニ短調 Op.33-5',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2897,6 +3082,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-etude-op33-6',
       title: 'Étude-Tableau in E♭ minor',
+      titleJa: '絵画的練習曲 変ホ短調 Op.33-6',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2913,6 +3099,7 @@ const RACHMANINOFF: ComposerGroup = {
     {
       id: 'rachmaninoff-etude-op33-8',
       title: 'Étude-Tableau in C minor',
+      titleJa: '絵画的練習曲 ハ短調 Op.33-8',
       composer: 'S. Rachmaninoff',
       composerFull: 'Sergei Rachmaninoff',
       category: 'romantic',
@@ -2937,6 +3124,7 @@ const RACHMANINOFF: ComposerGroup = {
 const DEBUSSY: ComposerGroup = {
   composer: 'C. Debussy',
   composerFull: 'Claude Debussy',
+  composerJa: 'C. ドビュッシー',
   period: 'Impressionist',
   nationality: 'French',
   years: '1862–1918',
@@ -2944,6 +3132,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-clair-de-lune',
       title: 'Clair de Lune',
+      titleJa: '月の光',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -2959,6 +3148,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-suite-bergamasque-1',
       title: 'Suite bergamasque: Prélude',
+      titleJa: 'ベルガマスク組曲 第1曲 前奏曲',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -2974,6 +3164,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-suite-bergamasque-2',
       title: 'Suite bergamasque: Menuet',
+      titleJa: 'ベルガマスク組曲 第2曲 メヌエット',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -2989,6 +3180,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-suite-bergamasque-4',
       title: 'Suite bergamasque: Passepied',
+      titleJa: 'ベルガマスク組曲 第4曲 パスピエ',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3004,6 +3196,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-childrens-corner-1',
       title: 'Children\'s Corner: Doctor Gradus ad Parnassum',
+      titleJa: '子供の領分 第1曲「グラドゥス・アド・パルナッスム博士」',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3019,6 +3212,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-childrens-corner-2',
       title: 'Children\'s Corner: Jimbo\'s Lullaby',
+      titleJa: '子供の領分 第2曲「象の子守歌」',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3034,6 +3228,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-childrens-corner-3',
       title: 'Children\'s Corner: Serenade for the Doll',
+      titleJa: '子供の領分 第3曲「人形のセレナード」',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3049,6 +3244,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-childrens-corner-4',
       title: 'Children\'s Corner: The Snow is Dancing',
+      titleJa: '子供の領分 第4曲「雪が踊っている」',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3064,6 +3260,7 @@ const DEBUSSY: ComposerGroup = {
     {
       id: 'debussy-childrens-corner-6',
       title: 'Children\'s Corner: Golliwogg\'s Cakewalk',
+      titleJa: '子供の領分 第6曲「ゴリウォーグのケークウォーク」',
       composer: 'C. Debussy',
       composerFull: 'Claude Debussy',
       category: 'impressionist',
@@ -3083,6 +3280,7 @@ const DEBUSSY: ComposerGroup = {
 const RAVEL: ComposerGroup = {
   composer: 'M. Ravel',
   composerFull: 'Maurice Ravel',
+  composerJa: 'M. ラヴェル',
   period: 'Impressionist',
   nationality: 'French',
   years: '1875–1937',
@@ -3090,6 +3288,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-bolero',
       title: 'Boléro',
+      titleJa: 'ボレロ',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'orchestral',
@@ -3105,6 +3304,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-jeux-deau',
       title: 'Jeux d\'eau',
+      titleJa: '水の戯れ',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'impressionist',
@@ -3120,6 +3320,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-gaspard-ondine',
       title: 'Gaspard de la nuit: Ondine',
+      titleJa: '夜のガスパール「オンディーヌ」',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'impressionist',
@@ -3135,6 +3336,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-gaspard-gibet',
       title: 'Gaspard de la nuit: Le Gibet',
+      titleJa: '夜のガスパール「絞首台」',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'impressionist',
@@ -3150,6 +3352,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-gaspard-scarbo',
       title: 'Gaspard de la nuit: Scarbo',
+      titleJa: '夜のガスパール「スカルボ」',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'impressionist',
@@ -3165,6 +3368,7 @@ const RAVEL: ComposerGroup = {
     {
       id: 'ravel-miroirs-1',
       title: 'Miroirs: Noctuelles',
+      titleJa: '鏡 第1曲「夜の蛾」',
       composer: 'M. Ravel',
       composerFull: 'Maurice Ravel',
       category: 'impressionist',
@@ -3216,6 +3420,7 @@ const WORLD_TRADITIONAL: ComposerGroup = {
 const JOPLIN: ComposerGroup = {
   composer: 'S. Joplin',
   composerFull: 'Scott Joplin',
+  composerJa: 'S. ジョプリン',
   period: 'Ragtime',
   nationality: 'American',
   years: '1868–1917',
@@ -3223,6 +3428,7 @@ const JOPLIN: ComposerGroup = {
     {
       id: 'joplin-entertainer',
       title: 'The Entertainer',
+      titleJa: 'エンターテイナー',
       composer: 'S. Joplin',
       composerFull: 'Scott Joplin',
       category: 'other',
@@ -3238,6 +3444,7 @@ const JOPLIN: ComposerGroup = {
     {
       id: 'joplin-maple-leaf-rag',
       title: 'Maple Leaf Rag',
+      titleJa: 'メープルリーフ・ラグ',
       composer: 'S. Joplin',
       composerFull: 'Scott Joplin',
       category: 'other',
@@ -3256,6 +3463,7 @@ const JOPLIN: ComposerGroup = {
 const PACHELBEL: ComposerGroup = {
   composer: 'J. Pachelbel',
   composerFull: 'Johann Pachelbel',
+  composerJa: 'J. パッヘルベル',
   period: 'Baroque',
   nationality: 'German',
   years: '1653–1706',
@@ -3263,6 +3471,7 @@ const PACHELBEL: ComposerGroup = {
     {
       id: 'pachelbel-canon-in-d',
       title: 'Canon in D',
+      titleJa: 'カノン ニ長調',
       composer: 'J. Pachelbel',
       composerFull: 'Johann Pachelbel',
       category: 'orchestral',
@@ -3286,6 +3495,7 @@ const PACHELBEL: ComposerGroup = {
 const MENDELSSOHN: ComposerGroup = {
   composer: 'F. Mendelssohn',
   composerFull: 'Felix Mendelssohn',
+  composerJa: 'F. メンデルスゾーン',
   period: 'Romantic',
   nationality: 'German',
   years: '1809–1847',
@@ -3293,6 +3503,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-1',
       title: 'Song without Words Op. 19 No. 1',
+      titleJa: '無言歌集 Op.19 No.1 ホ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3309,6 +3520,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-2',
       title: 'Song without Words Op. 19 No. 2',
+      titleJa: '無言歌集 Op.19 No.2 イ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3325,6 +3537,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-3',
       title: 'Song without Words Op. 19 No. 3 "Hunting Song"',
+      titleJa: '無言歌集 Op.19 No.3「狩人の歌」ホ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3341,6 +3554,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-4',
       title: 'Song without Words Op. 19 No. 4',
+      titleJa: '無言歌集 Op.19 No.4 イ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3357,6 +3571,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-5',
       title: 'Song without Words Op. 19 No. 5 "Restlessness"',
+      titleJa: '無言歌集 Op.19 No.5「不安」嬰ヘ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3373,6 +3588,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op19-6',
       title: 'Song without Words Op. 19 No. 6 "Venetian Gondola Song"',
+      titleJa: '無言歌集 Op.19 No.6「ヴェネツィアのゴンドラの歌」ト短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3389,6 +3605,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op30-1',
       title: 'Song without Words Op. 30 No. 1',
+      titleJa: '無言歌集 Op.30 No.1 変ホ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3405,6 +3622,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op30-2',
       title: 'Song without Words Op. 30 No. 2 "Venetian Gondola Song No. 2"',
+      titleJa: '無言歌集 Op.30 No.2「ヴェネツィアのゴンドラの歌 第2番」ヘ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3421,6 +3639,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op30-3',
       title: 'Song without Words Op. 30 No. 3',
+      titleJa: '無言歌集 Op.30 No.3 ホ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3437,6 +3656,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op30-4',
       title: 'Song without Words Op. 30 No. 4',
+      titleJa: '無言歌集 Op.30 No.4 ロ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3453,6 +3673,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op30-5',
       title: 'Song without Words Op. 30 No. 5',
+      titleJa: '無言歌集 Op.30 No.5 ニ長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3469,6 +3690,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op53-5',
       title: 'Song without Words Op. 53 No. 5',
+      titleJa: '無言歌集 Op.53 No.5 イ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3485,6 +3707,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op62-3',
       title: 'Song without Words Op. 62 No. 3 "Funeral March"',
+      titleJa: '無言歌集 Op.62 No.3「葬送行進曲」ホ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3501,6 +3724,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op62-4',
       title: 'Song without Words Op. 62 No. 4 "Morning Song"',
+      titleJa: '無言歌集 Op.62 No.4「朝の歌」ト長調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3517,6 +3741,7 @@ const MENDELSSOHN: ComposerGroup = {
     {
       id: 'mendelssohn-sww-op62-5',
       title: 'Song without Words Op. 62 No. 5 "Venetian Gondola Song No. 3"',
+      titleJa: '無言歌集 Op.62 No.5「ヴェネツィアのゴンドラの歌 第3番」イ短調',
       composer: 'F. Mendelssohn',
       composerFull: 'Felix Mendelssohn',
       category: 'romantic',
@@ -3540,6 +3765,7 @@ const MENDELSSOHN: ComposerGroup = {
 const HOLST: ComposerGroup = {
   composer: 'G. Holst',
   composerFull: 'Gustav Holst',
+  composerJa: 'G. ホルスト',
   period: 'Romantic',
   nationality: 'British',
   years: '1874–1934',
@@ -3547,6 +3773,7 @@ const HOLST: ComposerGroup = {
     {
       id: 'holst-jupiter',
       title: 'The Planets — Jupiter, the Bringer of Jollity',
+      titleJa: '惑星 第4曲「木星」',
       composer: 'G. Holst',
       composerFull: 'Gustav Holst',
       category: 'orchestral',
@@ -3566,6 +3793,7 @@ const HOLST: ComposerGroup = {
 const BIZET: ComposerGroup = {
   composer: 'G. Bizet',
   composerFull: 'Georges Bizet',
+  composerJa: 'G. ビゼー',
   period: 'Romantic',
   nationality: 'French',
   years: '1838–1875',
@@ -3573,6 +3801,7 @@ const BIZET: ComposerGroup = {
     {
       id: 'bizet-carmen-overture',
       title: 'Carmen — Overture',
+      titleJa: '歌劇「カルメン」序曲',
       composer: 'G. Bizet',
       composerFull: 'Georges Bizet',
       category: 'orchestral',
@@ -3591,6 +3820,7 @@ const BIZET: ComposerGroup = {
 const WAGNER: ComposerGroup = {
   composer: 'R. Wagner',
   composerFull: 'Richard Wagner',
+  composerJa: 'R. ワーグナー',
   period: 'Romantic',
   nationality: 'German',
   years: '1813–1883',
@@ -3598,6 +3828,7 @@ const WAGNER: ComposerGroup = {
     {
       id: 'wagner-ride-of-the-valkyries',
       title: 'Ride of the Valkyries',
+      titleJa: 'ワルキューレの騎行',
       composer: 'R. Wagner',
       composerFull: 'Richard Wagner',
       category: 'orchestral',
