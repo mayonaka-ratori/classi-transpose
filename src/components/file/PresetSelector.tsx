@@ -1,6 +1,7 @@
 import { useCallback } from 'react';
 
 import { useMidiStore } from '../../stores/useMidiStore';
+import { useTranslation } from '../../i18n';
 import type { MidiPiece } from '../../data/midi-catalog';
 import { MIDI_CATALOG } from '../../data/midi-catalog';
 
@@ -33,9 +34,16 @@ function PresetCard({
   isLoading,
   onSelect,
 }: PresetCardProps): React.JSX.Element {
+  const { lang } = useTranslation();
   const handleClick = useCallback((): void => {
     if (!isLoading) onSelect(piece);
   }, [isLoading, onSelect, piece]);
+
+  // composerJa lives on ComposerGroup, not MidiPiece — look it up
+  const composerGroup = MIDI_CATALOG.find((g) => g.composerFull === piece.composerFull);
+  const displayTitle = lang === 'ja' && piece.titleJa ? piece.titleJa : piece.title;
+  const displayComposer =
+    lang === 'ja' && composerGroup?.composerJa ? composerGroup.composerJa : piece.composer;
 
   return (
     <button
@@ -69,7 +77,7 @@ function PresetCard({
         className="text-[11px] font-medium truncate mb-0.5"
         style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-secondary)' }}
       >
-        {piece.composer}
+        {displayComposer}
         {piece.opus ? ` · ${piece.opus}` : ''}
       </p>
 
@@ -78,7 +86,7 @@ function PresetCard({
         className="text-sm font-semibold leading-snug truncate"
         style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
       >
-        {piece.title}
+        {displayTitle}
       </p>
 
       {/* Key + BPM — monospace tertiary */}

@@ -3,6 +3,7 @@ import { useState, useCallback } from 'react';
 import { useMidiPlayer } from '../../hooks/useMidiPlayer';
 import { useMidiStore } from '../../stores/useMidiStore';
 import { useTranslation } from '../../i18n';
+import { MIDI_CATALOG } from '../../data/midi-catalog';
 
 import { AmbientBackground } from './AmbientBackground';
 import { FileUploader } from '../file/FileUploader';
@@ -35,14 +36,24 @@ const GLASS_CARD_ELEVATED = [
 function SongInfoCard(): React.JSX.Element {
   const parsedMidi = useMidiStore((s) => s.parsedMidi);
   const fileName = useMidiStore((s) => s.fileName);
+  const currentPiece = useMidiStore((s) => s.currentPiece);
   const originalKeySignature = useMidiStore((s) => s.originalKeySignature);
+  const { lang } = useTranslation();
 
   if (!parsedMidi) return <></>;
 
-  // Extract title / composer from fileName if formatted "Title — Composer"
-  const [title, composer] = fileName.includes(' — ')
-    ? fileName.split(' — ')
-    : [fileName, ''];
+  // i18n-aware title: prefer titleJa when lang==='ja', fall back to fileName parsing
+  const displayTitle = currentPiece
+    ? (lang === 'ja' && currentPiece.titleJa ? currentPiece.titleJa : currentPiece.title)
+    : (fileName.includes(' — ') ? (fileName.split(' — ')[0] ?? fileName) : fileName);
+
+  // composerJa lives on ComposerGroup, not MidiPiece — look it up from catalog
+  const composerGroup = currentPiece
+    ? MIDI_CATALOG.find((g) => g.composerFull === currentPiece.composerFull)
+    : undefined;
+  const displayComposer = currentPiece
+    ? (lang === 'ja' && composerGroup?.composerJa ? composerGroup.composerJa : currentPiece.composerFull)
+    : (fileName.includes(' — ') ? (fileName.split(' — ')[1] ?? '') : '');
 
   return (
     <section
@@ -54,16 +65,16 @@ function SongInfoCard(): React.JSX.Element {
         className="text-xl md:text-2xl font-semibold leading-snug line-clamp-2"
         style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-on-glass)' }}
       >
-        {title || fileName}
+        {displayTitle}
       </p>
 
       {/* Composer (italic serif) */}
-      {composer && (
+      {displayComposer && (
         <p
           className="text-sm italic mt-0.5"
           style={{ fontFamily: 'var(--font-serif)', color: 'var(--color-text-secondary)' }}
         >
-          {composer}
+          {displayComposer}
         </p>
       )}
 
