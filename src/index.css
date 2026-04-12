@@ -168,6 +168,9 @@ body {
   opacity: 0.4;
   cursor: not-allowed;
 }
+.slider-indigo:focus-visible {
+  box-shadow: 0 0 0 3px rgba(92, 107, 192, 0.40);
+}
 
 /* ─────────────────────────────────────────
    Custom slider: BPM (teal)
@@ -210,6 +213,9 @@ body {
   opacity: 0.4;
   cursor: not-allowed;
 }
+.slider-teal:focus-visible {
+  box-shadow: 0 0 0 3px rgba(38, 166, 154, 0.40);
+}
 
 /* ─────────────────────────────────────────
    Custom slider: Seek (rose)
@@ -251,6 +257,9 @@ body {
 .slider-rose:disabled {
   opacity: 0.4;
   cursor: not-allowed;
+}
+.slider-rose:focus-visible {
+  box-shadow: 0 0 0 3px rgba(194, 24, 91, 0.40);
 }
 
 /* ─────────────────────────────────────────

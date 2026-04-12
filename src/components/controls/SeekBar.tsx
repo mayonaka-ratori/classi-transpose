@@ -78,6 +78,7 @@ export function SeekBar(): React.JSX.Element {
           aria-valuemin={0}
           aria-valuemax={duration}
           aria-valuenow={currentTime}
+          aria-valuetext={`${formatTime(currentTime)} / ${formatTime(duration)}`}
           className="slider-rose w-full relative z-10"
           style={{ touchAction: 'none' }}
         />

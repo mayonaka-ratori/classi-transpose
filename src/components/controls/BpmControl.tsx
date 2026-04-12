@@ -106,6 +106,7 @@ export function BpmControl(): React.JSX.Element {
         aria-valuemin={MIN_TEMPO_SCALE}
         aria-valuemax={sliderMax}
         aria-valuenow={tempoScale}
+        aria-valuetext={`${currentBpm} ${t.tempo.bpm}`}
         className="slider-teal"
       />
 

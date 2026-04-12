@@ -20,10 +20,8 @@ export function initSequencer(midi: BasicMIDI): void {
   const synth = getSynthesizer();
   if (!synth) throw new Error('Synthesizer not initialized — call initAudio() first');
 
-  // Dispose previous sequencer if any
-  if (sequencer) {
-    sequencer.pause();
-  }
+  // Dispose previous scheduler resources before re-initializing
+  destroyScheduler();
 
   sequencer = new Sequencer(synth);
   sequencer.loadNewSongList([midi]);
@@ -54,6 +52,22 @@ export function stop(): void {
   if (!sequencer) return;
   sequencer.pause();
   sequencer.currentTime = 0;
+}
+
+/**
+ * Cancel the rAF loop and release the Sequencer reference.
+ * Safe to call multiple times (idempotent).
+ */
+export function destroyScheduler(): void {
+  if (rafId !== null) {
+    cancelAnimationFrame(rafId);
+    rafId = null;
+  }
+  if (sequencer) {
+    sequencer.pause();
+    sequencer = null;
+  }
+  timeUpdateCallback = null;
 }
 
 /**

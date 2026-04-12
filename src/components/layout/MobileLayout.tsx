@@ -255,7 +255,7 @@ export function MobileLayout(): React.JSX.Element {
               className="text-xs mb-3"
               style={{ color: 'var(--color-text-tertiary)' }}
             >
-              Or upload your own .mid file:
+              {t.library.uploadOwn}
             </p>
             <FileUploader />
           </section>

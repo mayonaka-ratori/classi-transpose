@@ -125,6 +125,7 @@ export function TransposeControl(): React.JSX.Element {
           aria-valuemin={MIN_TRANSPOSE_SEMITONES}
           aria-valuemax={MAX_TRANSPOSE_SEMITONES}
           aria-valuenow={semitones}
+          aria-valuetext={semitoneLabel}
           className="slider-indigo flex-1"
         />
 

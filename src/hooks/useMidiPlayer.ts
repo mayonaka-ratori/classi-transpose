@@ -2,7 +2,12 @@ import { useEffect, useRef } from 'react';
 import { usePlayerStore } from '../stores/usePlayerStore';
 import { useMidiStore } from '../stores/useMidiStore';
 import { initAudio, applyTranspose } from '../engine/audio/synth-manager';
-import { onTimeUpdate, offTimeUpdate, getDuration } from '../engine/audio/playback-scheduler';
+import {
+  onTimeUpdate,
+  offTimeUpdate,
+  getDuration,
+  destroyScheduler,
+} from '../engine/audio/playback-scheduler';
 import { getOriginalBpm } from '../engine/midi/tempo';
 
 /**
@@ -25,6 +30,9 @@ export function useMidiPlayer(): void {
     initAudio().catch((err: unknown) => {
       console.error('Failed to initialize audio:', err);
     });
+    return () => {
+      destroyScheduler();
+    };
   }, []);
 
   // Sync time updates from playback engine to store
